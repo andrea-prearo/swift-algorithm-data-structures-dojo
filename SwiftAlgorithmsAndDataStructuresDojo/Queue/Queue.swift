@@ -12,25 +12,30 @@ public enum QueueError: Error {
     case outOfSpace
 }
 
-// MARK: - Stack
+/*
+ `Queue` is using a `LinkedList` as the underlying mechanism for storing data.
+ Because of this all operations are executed in constant time O(1).
+ */
+
+// MARK: - Queue
 public final class Queue<T> {
-    fileprivate var items: [T] = []
+    fileprivate let list = LinkedList<T>()
     fileprivate var maxSize: Int = Int.max
 
     public var count: Int {
-        return items.count
+        return list.count
     }
 
     public var front: T? {
-        return items.first
+        return list.head?.value
     }
     
     public var back: T? {
-        return items.last
+        return list.tail?.value
     }
 
     public var isEmpty: Bool {
-        return items.count == 0
+        return list.count == 0
     }
 
     public convenience init(maxSize: Int) {
@@ -47,35 +52,28 @@ public final class Queue<T> {
     }
 
     public func push(_ item: T) throws {
-        if items.count == maxSize {
-            throw StackError.outOfSpace
+        if list.count == maxSize {
+            throw QueueError.outOfSpace
         }
-        items.append(item)
+        list.append(item)
     }
 
     public func pop() -> T? {
-        if items.count == 0 {
+        if isEmpty {
             return nil
         }
-        return items.removeFirst()
+        return list.removeHead()
     }
 
     public func clear() {
-        items = []
+        list.removeAll()
     }
 }
 
 // MARK: - Queue + CustomStringConvertible
 extension Queue: CustomStringConvertible {
     public var description: String {
-        var string = "["
-        _ = (0..<items.count).map {
-            string += "\(items[$0])"
-            if $0 < items.count - 1 {
-                string += ", "
-            }
-        }
-        return string + "]"
+        return list.description
     }
 }
 
@@ -102,6 +100,6 @@ extension Queue: ExpressibleByArrayLiteral {
 // MARK: - Queue to Array<T>
 extension Queue {
     var array: [T] {
-        return items
+        return list.array
     }
 }

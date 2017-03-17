@@ -1,5 +1,5 @@
 //
-//  Stack.swift
+//  SimpleQueue.swift
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Prearo, Andrea on 3/17/17.
@@ -8,12 +8,16 @@
 
 import Foundation
 
-public enum StackError: Error {
-    case outOfSpace
-}
+/*
+ `SimpleQueue` is using an `Array` as the underlying mechanism for storing data.
+ Because of this, the `pop` operation is not optimized.
+ The `push` operation requires constant time O(1), as we are just appending to the array.
+ The `pop` operation, instead, requires linear time O(n) because `Array` needs to rearrange
+ the entire array after removing the first item.
+ */
 
-// MARK: - Stack
-public final class Stack<T> {
+// MARK: - Queue
+public final class SimpleQueue<T> {
     fileprivate var items: [T] = []
     fileprivate var maxSize: Int = Int.max
 
@@ -21,10 +25,14 @@ public final class Stack<T> {
         return items.count
     }
 
-    public var top: T? {
-        return items.last
+    public var front: T? {
+        return items.first
     }
     
+    public var back: T? {
+        return items.last
+    }
+
     public var isEmpty: Bool {
         return items.count == 0
     }
@@ -44,7 +52,7 @@ public final class Stack<T> {
 
     public func push(_ item: T) throws {
         if items.count == maxSize {
-            throw StackError.outOfSpace
+            throw QueueError.outOfSpace
         }
         items.append(item)
     }
@@ -53,7 +61,7 @@ public final class Stack<T> {
         if isEmpty {
             return nil
         }
-        return items.popLast()
+        return items.removeFirst()
     }
 
     public func clear() {
@@ -61,8 +69,8 @@ public final class Stack<T> {
     }
 }
 
-// MARK: - Stack + CustomStringConvertible
-extension Stack: CustomStringConvertible {
+// MARK: - SimpleQueue + CustomStringConvertible
+extension SimpleQueue: CustomStringConvertible {
     public var description: String {
         var string = "["
         _ = (0..<items.count).map {
@@ -75,8 +83,8 @@ extension Stack: CustomStringConvertible {
     }
 }
 
-// MARK: - Stack + Sequence
-extension Stack: Sequence {
+// MARK: - SimpleQueue + Sequence
+extension SimpleQueue: Sequence {
     public func makeIterator() -> AnyIterator<T> {
         return AnyIterator {
             return self.pop()
@@ -84,8 +92,8 @@ extension Stack: Sequence {
     }
 }
 
-// MARK: - Stack + ExpressibleByArrayLiteral
-extension Stack: ExpressibleByArrayLiteral {
+// MARK: - SimpleQueue + ExpressibleByArrayLiteral
+extension SimpleQueue: ExpressibleByArrayLiteral {
     public convenience init(arrayLiteral elements: T...) {
         self.init()
 
@@ -95,8 +103,8 @@ extension Stack: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - Stack to Array<T>
-extension Stack {
+// MARK: - SimpleQueue to Array<T>
+extension SimpleQueue {
     var array: [T] {
         return items
     }

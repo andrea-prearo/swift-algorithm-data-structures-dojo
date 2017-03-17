@@ -1,5 +1,5 @@
 //
-//  QueueTests.swift
+//  SimpleQueueTests.swift
 //  SwiftAlgorithmsAndDataStructuresDojoTests
 //
 //  Created by Prearo, Andrea on 3/17/17.
@@ -9,15 +9,15 @@
 import XCTest
 @testable import SwiftAlgorithmsAndDataStructuresDojo
 
-class QueueTests: XCTestCase {
+class SimpleQueueTests: XCTestCase {
     static let integers = [5, -1, 8, 3, -24, 32, 0, 8]
-    lazy var queue: Queue<Int> = {
-        return Queue<Int>(array: QueueTests.integers)
+    lazy var queue: SimpleQueue<Int> = {
+        return SimpleQueue<Int>(array: SimpleQueueTests.integers)
     }()
 
     func testIsEmpty() {
-        XCTAssertTrue(Queue<Int>().isEmpty)
-        XCTAssertTrue(Queue<String>().isEmpty)
+        XCTAssertTrue(SimpleQueue<Int>().isEmpty)
+        XCTAssertTrue(SimpleQueue<String>().isEmpty)
     }
 
     func testFront() {
@@ -29,14 +29,14 @@ class QueueTests: XCTestCase {
     }
 
     func testInitFromArray() {
-        XCTAssertEqual(queue.count, QueueTests.integers.count)
-        XCTAssertEqual(queue.array, QueueTests.integers)
+        XCTAssertEqual(queue.count, SimpleQueueTests.integers.count)
+        XCTAssertEqual(queue.array, SimpleQueueTests.integers)
     }
 
     func testCount() {
-        XCTAssertEqual(queue.count, QueueTests.integers.count)
-        XCTAssertEqual(Queue<Int>().count, 0)
-        XCTAssertEqual(Queue(arrayLiteral: 1, 2, 3).count, 3)
+        XCTAssertEqual(queue.count, SimpleQueueTests.integers.count)
+        XCTAssertEqual(SimpleQueue<Int>().count, 0)
+        XCTAssertEqual(SimpleQueue(arrayLiteral: 1, 2, 3).count, 3)
     }
 
     func testPush() {
@@ -60,22 +60,22 @@ class QueueTests: XCTestCase {
     }
 
     func testDescription() {
-        XCTAssertEqual(queue.description, String(describing: QueueTests.integers))
+        XCTAssertEqual(queue.description, String(describing: SimpleQueueTests.integers))
     }
 
     func testExpressibleByArrayLiteral() {
-        let queue = Queue(arrayLiteral: 0, 1, 2, 3)
+        let queue = SimpleQueue(arrayLiteral: 0, 1, 2, 3)
         XCTAssertEqual(queue.count, 4)
         XCTAssertEqual(queue.array, [0, 1, 2, 3])
     }
 
     func testAsArray() {
-        XCTAssertEqual(queue.array, QueueTests.integers)
+        XCTAssertEqual(queue.array, SimpleQueueTests.integers)
     }
 
     func testPushOutOfSpaceError() {
         let maxSize = 10
-        let queue = Queue<Int>(maxSize: maxSize)
+        let queue = SimpleQueue<Int>(maxSize: maxSize)
         _ = (0..<maxSize).map { try? queue.push($0) }
         do {
             try queue.push(maxSize)

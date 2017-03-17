@@ -47,7 +47,7 @@ class LinkedListTests: XCTestCase {
     }
 
     func testRemoveHead() {
-        list.removeHead()
+        XCTAssertEqual(list.removeHead(), 5)
         var integers = LinkedListTests.integers
         XCTAssertEqual(list.count, integers.count - 1)
         integers.removeFirst()
@@ -55,7 +55,7 @@ class LinkedListTests: XCTestCase {
     }
 
     func testRemoveTail() {
-        list.removeTail()
+        XCTAssertEqual(list.removeTail(), 8)
         var integers = LinkedListTests.integers
         XCTAssertEqual(list.count, integers.count - 1)
         integers.removeLast()

@@ -61,15 +61,19 @@ public final class LinkedList<T> {
         count += 1
     }
 
-    public func removeHead() {
+    public func removeHead() -> T? {
+        let value = head?.value
         head = head?.next
         count -= 1
+        return value
     }
 
-    public func removeTail() {
+    public func removeTail() -> T? {
+        let value = tail?.value
         tail?.previous?.next = nil
         tail = tail?.previous
         count -= 1
+        return value
     }
 
     public func removeAll() {

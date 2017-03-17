@@ -67,4 +67,17 @@ class StackTests: XCTestCase {
     func testAsArray() {
         XCTAssertEqual(stack.array, StackTests.integers)
     }
+
+    func testOutOfSpaceError() {
+        let maxSize = 10
+        let stack = Stack<Int>(maxSize: maxSize)
+        _ = (0..<maxSize).map { try? stack.push($0) }
+        do {
+            try stack.push(maxSize)
+        } catch let error {
+            XCTAssertEqual(error.localizedDescription, StackError.outOfSpace.localizedDescription)
+            return
+        }
+        XCTFail("push didn't throw a StackError.outOfSpace exception")
+    }
 }

@@ -10,7 +10,7 @@ import XCTest
 @testable import SwiftAlgorithmsAndDataStructuresDojo
 
 class LinkedListTests: XCTestCase {
-    static let integers = [5, -1, 8, 3, -24, 32, 0 ,8]
+    static let integers = [5, -1, 8, 3, -24, 32, 0, 8]
     lazy var list: LinkedList<Int> = {
         return LinkedList<Int>(array: LinkedListTests.integers)
     }()

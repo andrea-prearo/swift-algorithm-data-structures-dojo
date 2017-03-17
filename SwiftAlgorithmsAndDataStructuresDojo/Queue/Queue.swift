@@ -1,5 +1,5 @@
 //
-//  Stack.swift
+//  Queue.swift
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Prearo, Andrea on 3/17/17.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum StackError: Error {
+public enum QueueError: Error {
     case outOfSpace
 }
 
 // MARK: - Stack
-public final class Stack<T> {
+public final class Queue<T> {
     fileprivate var items: [T] = []
     fileprivate var maxSize: Int = Int.max
 
@@ -21,10 +21,14 @@ public final class Stack<T> {
         return items.count
     }
 
-    public var top: T? {
-        return items.last
+    public var front: T? {
+        return items.first
     }
     
+    public var back: T? {
+        return items.last
+    }
+
     public var isEmpty: Bool {
         return items.count == 0
     }
@@ -53,7 +57,7 @@ public final class Stack<T> {
         if items.count == 0 {
             return nil
         }
-        return items.popLast()
+        return items.removeFirst()
     }
 
     public func clear() {
@@ -61,8 +65,8 @@ public final class Stack<T> {
     }
 }
 
-// MARK: - Stack + CustomStringConvertible
-extension Stack: CustomStringConvertible {
+// MARK: - Queue + CustomStringConvertible
+extension Queue: CustomStringConvertible {
     public var description: String {
         var string = "["
         _ = (0..<items.count).map {
@@ -75,8 +79,8 @@ extension Stack: CustomStringConvertible {
     }
 }
 
-// MARK: - Stack + Sequence
-extension Stack: Sequence {
+// MARK: - Queue + Sequence
+extension Queue: Sequence {
     public func makeIterator() -> AnyIterator<T> {
         return AnyIterator {
             return self.pop()
@@ -84,8 +88,8 @@ extension Stack: Sequence {
     }
 }
 
-// MARK: - Stack + ExpressibleByArrayLiteral
-extension Stack: ExpressibleByArrayLiteral {
+// MARK: - Queue + ExpressibleByArrayLiteral
+extension Queue: ExpressibleByArrayLiteral {
     public convenience init(arrayLiteral elements: T...) {
         self.init()
 
@@ -95,8 +99,8 @@ extension Stack: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - Stack to Array<T>
-extension Stack {
+// MARK: - Queue to Array<T>
+extension Queue {
     var array: [T] {
         return items
     }

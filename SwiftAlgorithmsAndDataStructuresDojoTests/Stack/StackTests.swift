@@ -10,7 +10,7 @@ import XCTest
 @testable import SwiftAlgorithmsAndDataStructuresDojo
 
 class StackTests: XCTestCase {
-    static let integers = [5, -1, 8, 3, -24, 32, 0 ,8]
+    static let integers = [5, -1, 8, 3, -24, 32, 0, 8]
     lazy var stack: Stack<Int> = {
         return Stack<Int>(array: StackTests.integers)
     }()
@@ -43,6 +43,10 @@ class StackTests: XCTestCase {
         } catch let error {
             XCTFail(error.localizedDescription)
         }
+    }
+
+    func testPop() {
+        XCTAssertEqual(stack.pop(), 8)
     }
 
     func testClear() {

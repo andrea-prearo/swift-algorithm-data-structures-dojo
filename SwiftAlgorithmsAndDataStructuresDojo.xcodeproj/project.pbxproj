@@ -11,6 +11,8 @@
 		AF171D401E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF171D3F1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.swift */; };
 		AF171D421E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h in Headers */ = {isa = PBXBuildFile; fileRef = AF171D341E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF171D4D1E7AB01A0075C5F3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */; };
+		AF72A18C1E7C8197007F8FA2 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A18B1E7C8197007F8FA2 /* Queue.swift */; };
+		AF72A18F1E7C8413007F8FA2 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A18E1E7C8413007F8FA2 /* QueueTests.swift */; };
 		AFD7EADD1E7C0629002069CD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EADC1E7C0629002069CD /* Stack.swift */; };
 		AFD7EAE31E7C105B002069CD /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EAE21E7C105B002069CD /* LinkedListTests.swift */; };
 		AFD7EAE51E7C1143002069CD /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EAE41E7C1143002069CD /* StackTests.swift */; };
@@ -35,6 +37,8 @@
 		AF171D411E7AAF670075C5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		AF171D551E7AB1100075C5F3 /* LinkedList.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LinkedList.playground; sourceTree = "<group>"; };
+		AF72A18B1E7C8197007F8FA2 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		AF72A18E1E7C8413007F8FA2 /* QueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		AFD7EADC1E7C0629002069CD /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Stack/Stack.swift; sourceTree = "<group>"; };
 		AFD7EAE21E7C105B002069CD /* LinkedListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
 		AFD7EAE41E7C1143002069CD /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackTests.swift; path = Stack/StackTests.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				AF171D4B1E7AB01A0075C5F3 /* LinkedList */,
+				AF72A18A1E7C8197007F8FA2 /* Queue */,
 				AFD7EADB1E7C060C002069CD /* Stack */,
 				AF171D341E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h */,
 				AF171D351E7AAF670075C5F3 /* Info.plist */,
@@ -92,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				AFD7EAE11E7C105B002069CD /* LinkedList */,
+				AF72A18D1E7C8413007F8FA2 /* Queue */,
 				AFD7EADE1E7C101E002069CD /* Stack */,
 				AF171D3F1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.swift */,
 				AF171D411E7AAF670075C5F3 /* Info.plist */,
@@ -106,6 +112,22 @@
 				AF171D551E7AB1100075C5F3 /* LinkedList.playground */,
 			);
 			path = LinkedList;
+			sourceTree = "<group>";
+		};
+		AF72A18A1E7C8197007F8FA2 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				AF72A18B1E7C8197007F8FA2 /* Queue.swift */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		AF72A18D1E7C8413007F8FA2 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				AF72A18E1E7C8413007F8FA2 /* QueueTests.swift */,
+			);
+			path = Queue;
 			sourceTree = "<group>";
 		};
 		AFD7EADB1E7C060C002069CD /* Stack */ = {
@@ -244,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD7EADD1E7C0629002069CD /* Stack.swift in Sources */,
+				AF72A18C1E7C8197007F8FA2 /* Queue.swift in Sources */,
 				AF171D4D1E7AB01A0075C5F3 /* LinkedList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +278,7 @@
 				AFD7EAE31E7C105B002069CD /* LinkedListTests.swift in Sources */,
 				AF171D401E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.swift in Sources */,
 				AFD7EAE51E7C1143002069CD /* StackTests.swift in Sources */,
+				AF72A18F1E7C8413007F8FA2 /* QueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

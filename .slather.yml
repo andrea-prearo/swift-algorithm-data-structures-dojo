@@ -1,0 +1,6 @@
+# .slather.yml
+
+coverage_service: html
+output_directory: SlatherHtml
+xcodeproj: SwiftAlgorithmsAndDataStructuresDojo.xcodeproj
+scheme: SwiftAlgorithmsAndDataStructuresDojo

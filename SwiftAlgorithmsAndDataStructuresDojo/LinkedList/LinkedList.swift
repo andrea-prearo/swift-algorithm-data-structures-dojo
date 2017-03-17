@@ -166,8 +166,8 @@ public struct ListNodeIterator<T>: IteratorProtocol {
 extension LinkedList: Sequence {
     public typealias Iterator = ListNodeIterator<T>
 
-    public func makeIterator() -> ListNodeIterator<T> {
-        return ListNodeIterator<T>(head: head)
+    public func makeIterator() -> Iterator {
+        return Iterator(head: head)
     }
 }
 

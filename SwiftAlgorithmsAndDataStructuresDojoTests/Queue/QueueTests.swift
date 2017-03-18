@@ -51,7 +51,8 @@ class QueueTests: XCTestCase {
     }
 
     func testPop() {
-        XCTAssertEqual(queue.pop(), 5)
+        _ = (0..<queue.count).map { XCTAssertEqual(queue.pop(), SimpleQueueTests.integers[$0]) }
+        XCTAssertNil(queue.pop())
     }
 
     func testClear() {
@@ -61,6 +62,14 @@ class QueueTests: XCTestCase {
 
     func testDescription() {
         XCTAssertEqual(queue.description, String(describing: QueueTests.integers))
+    }
+
+    func testSequence() {
+        var index = 0
+        for item in queue {
+            XCTAssertEqual(item, QueueTests.integers[index])
+            index += 1
+        }
     }
 
     func testExpressibleByArrayLiteral() {

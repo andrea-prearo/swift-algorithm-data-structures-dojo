@@ -11,7 +11,7 @@ import XCTest
 
 class DequeueTests: XCTestCase {
     static let integers = [5, -1, 8, 3, -24, 32, 0, 8]
-    lazy var queue: Dequeue<Int> = {
+    lazy var dequeue: Dequeue<Int> = {
         return Dequeue<Int>(array: DequeueTests.integers)
     }()
 
@@ -21,20 +21,20 @@ class DequeueTests: XCTestCase {
     }
 
     func testFront() {
-        XCTAssertEqual(queue.front, 5)
+        XCTAssertEqual(dequeue.front, 5)
     }
     
     func testBack() {
-        XCTAssertEqual(queue.back, 8)
+        XCTAssertEqual(dequeue.back, 8)
     }
 
     func testInitFromArray() {
-        XCTAssertEqual(queue.count, DequeueTests.integers.count)
-        XCTAssertEqual(queue.array, DequeueTests.integers)
+        XCTAssertEqual(dequeue.count, DequeueTests.integers.count)
+        XCTAssertEqual(dequeue.array, DequeueTests.integers)
     }
 
     func testCount() {
-        XCTAssertEqual(queue.count, DequeueTests.integers.count)
+        XCTAssertEqual(dequeue.count, DequeueTests.integers.count)
         XCTAssertEqual(Dequeue<Int>().count, 0)
         XCTAssertEqual(Dequeue(arrayLiteral: 1, 2, 3).count, 3)
     }
@@ -42,9 +42,9 @@ class DequeueTests: XCTestCase {
     func testPush() {
         let newValue = 1000
         do {
-            try queue.push(newValue)
-            XCTAssertEqual(queue.front, 5)
-            XCTAssertEqual(queue.back, newValue)
+            try dequeue.push(newValue)
+            XCTAssertEqual(dequeue.front, 5)
+            XCTAssertEqual(dequeue.back, newValue)
         } catch let error {
             XCTFail(error.localizedDescription)
         }
@@ -53,47 +53,58 @@ class DequeueTests: XCTestCase {
     func testPushFront() {
         let newValue = 1000
         do {
-            try queue.pushFront(newValue)
-            XCTAssertEqual(queue.front, newValue)
-            XCTAssertEqual(queue.back, 8)
+            try dequeue.pushFront(newValue)
+            XCTAssertEqual(dequeue.front, newValue)
+            XCTAssertEqual(dequeue.back, 8)
         } catch let error {
             XCTFail(error.localizedDescription)
         }
     }
 
     func testPop() {
-        XCTAssertEqual(queue.pop(), 5)
+        _ = (0..<dequeue.count).map { XCTAssertEqual(dequeue.pop(), SimpleQueueTests.integers[$0]) }
+        XCTAssertNil(dequeue.pop())
     }
 
     func testPopBack() {
-        XCTAssertEqual(queue.popBack(), 8)
+        let maxIndex = StackTests.integers.count - 1
+        _ = (0..<dequeue.count).map { XCTAssertEqual(dequeue.popBack(), SimpleQueueTests.integers[maxIndex - $0]) }
+        XCTAssertNil(dequeue.popBack())
     }
 
     func testClear() {
-        queue.clear()
-        XCTAssertEqual(queue.count, 0)
+        dequeue.clear()
+        XCTAssertEqual(dequeue.count, 0)
     }
 
     func testDescription() {
-        XCTAssertEqual(queue.description, String(describing: DequeueTests.integers))
+        XCTAssertEqual(dequeue.description, String(describing: DequeueTests.integers))
+    }
+
+    func testSequence() {
+        var index = 0
+        for item in dequeue {
+            XCTAssertEqual(item, DequeueTests.integers[index])
+            index += 1
+        }
     }
 
     func testExpressibleByArrayLiteral() {
-        let queue = Dequeue(arrayLiteral: 0, 1, 2, 3)
-        XCTAssertEqual(queue.count, 4)
-        XCTAssertEqual(queue.array, [0, 1, 2, 3])
+        let dequeue = Dequeue(arrayLiteral: 0, 1, 2, 3)
+        XCTAssertEqual(dequeue.count, 4)
+        XCTAssertEqual(dequeue.array, [0, 1, 2, 3])
     }
 
     func testAsArray() {
-        XCTAssertEqual(queue.array, DequeueTests.integers)
+        XCTAssertEqual(dequeue.array, DequeueTests.integers)
     }
 
     func testPushOutOfSpaceError() {
         let maxSize = 10
-        let queue = Dequeue<Int>(maxSize: maxSize)
-        _ = (0..<maxSize).map { try? queue.push($0) }
+        let dequeue = Dequeue<Int>(maxSize: maxSize)
+        _ = (0..<maxSize).map { try? dequeue.push($0) }
         do {
-            try queue.push(maxSize)
+            try dequeue.push(maxSize)
         } catch let error {
             XCTAssertEqual(error.localizedDescription, DequeueError.outOfSpace.localizedDescription)
             return
@@ -103,10 +114,10 @@ class DequeueTests: XCTestCase {
 
     func testPushFrontOutOfSpaceError() {
         let maxSize = 10
-        let queue = Dequeue<Int>(maxSize: maxSize)
-        _ = (0..<maxSize).map { try? queue.pushFront($0) }
+        let dequeue = Dequeue<Int>(maxSize: maxSize)
+        _ = (0..<maxSize).map { try? dequeue.pushFront($0) }
         do {
-            try queue.pushFront(maxSize)
+            try dequeue.pushFront(maxSize)
         } catch let error {
             XCTAssertEqual(error.localizedDescription, DequeueError.outOfSpace.localizedDescription)
             return

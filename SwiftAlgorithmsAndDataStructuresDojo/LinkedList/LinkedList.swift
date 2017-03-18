@@ -79,10 +79,15 @@ public final class LinkedList<T> {
     }
 
     public func insert(_ value: T, at index: Int) {
-        let nodeAtIndex = node(at: index)
+        guard let nodeAtIndex = node(at: index) else {
+            if index == count {
+                append(value)
+            }
+            return
+        }
         let newNode = ListNode(value: value, next: nodeAtIndex)
-        newNode.previous = nodeAtIndex?.previous
-        nodeAtIndex?.previous = newNode
+        newNode.previous = nodeAtIndex.previous
+        nodeAtIndex.previous = newNode
         if index == 0 {
             head = newNode
         } else if index == count - 1 {

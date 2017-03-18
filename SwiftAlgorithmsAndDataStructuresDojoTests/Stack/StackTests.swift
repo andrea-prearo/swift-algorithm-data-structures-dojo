@@ -46,7 +46,9 @@ class StackTests: XCTestCase {
     }
 
     func testPop() {
-        XCTAssertEqual(stack.pop(), 8)
+        let maxIndex = StackTests.integers.count - 1
+        _ = (0..<stack.count).map { XCTAssertEqual(stack.pop(), StackTests.integers[maxIndex - $0]) }
+        XCTAssertNil(stack.pop())
     }
 
     func testClear() {
@@ -56,6 +58,15 @@ class StackTests: XCTestCase {
 
     func testDescription() {
         XCTAssertEqual(stack.description, String(describing: StackTests.integers))
+    }
+
+    func testSequence() {
+        let maxIndex = StackTests.integers.count - 1
+        var index = 0
+        for item in stack {
+            XCTAssertEqual(item, StackTests.integers[maxIndex - index])
+            index += 1
+        }
     }
 
     func testExpressibleByArrayLiteral() {

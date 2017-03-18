@@ -45,7 +45,7 @@ class LinkedListTests: XCTestCase {
         XCTAssertEqual(list.tail?.value, newValue)
         XCTAssertEqual(list[list.count - 1], newValue)
     }
-    
+
     func testNodeAtIndex() {
         _ = (0..<list.count).map {
             let node = list.node(at: $0)
@@ -61,6 +61,22 @@ class LinkedListTests: XCTestCase {
                 XCTAssertNotNil(node?.previous)
             }
         }
+        XCTAssertNil(list.node(at: -1))
+        XCTAssertNil(list.node(at: list.count))
+        XCTAssertNil(list.node(at: list.count + 1))
+    }
+
+    func testInsertNodeAtIndex() {
+        let headValue = 1000
+        let tailValue = headValue
+        let integers = [0, 1, 2, 3]
+        let list = LinkedList<Int>(array: integers)
+        list.insert(headValue, at: 0)
+        XCTAssertEqual(list.count, integers.count + 1)
+        XCTAssertEqual(list.head?.value, headValue)
+        list.insert(tailValue, at: list.count - 1)
+        XCTAssertEqual(list.count, integers.count + 2)
+        XCTAssertEqual(list.tail?.value, tailValue)
     }
 
     func testRemoveHead() {
@@ -88,6 +104,8 @@ class LinkedListTests: XCTestCase {
         _ = (0..<list.count).map {
             XCTAssertEqual(list[$0], LinkedListTests.integers[$0])
         }
+        XCTAssertNil(list[-1])
+        XCTAssertNil(list[list.count])
     }
 
     func testReverse() {
@@ -108,6 +126,14 @@ class LinkedListTests: XCTestCase {
 
     func testDescription() {
         XCTAssertEqual(list.description, String(describing: LinkedListTests.integers))
+    }
+
+    func testSequence() {
+        var index = 0
+        for item in list {
+            XCTAssertEqual(item, LinkedListTests.integers[index])
+            index += 1
+        }
     }
 
     func testExpressibleByArrayLiteral() {

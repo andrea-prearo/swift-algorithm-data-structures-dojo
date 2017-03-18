@@ -61,6 +61,36 @@ public final class LinkedList<T> {
         count += 1
     }
 
+    public func node(at index: Int) -> ListNode<T>? {
+        guard 0..<self.count ~= index else {
+            return nil
+        }
+        
+        var count: Int = 0
+        var node = head
+        while node != nil {
+            if count == index {
+                return node
+            }
+            node = node!.next
+            count += 1
+        }
+        return nil
+    }
+
+    public func insert(_ value: T, at index: Int) {
+        let nodeAtIndex = node(at: index)
+        let newNode = ListNode(value: value, next: nodeAtIndex)
+        newNode.previous = nodeAtIndex?.previous
+        nodeAtIndex?.previous = newNode
+        if index == 0 {
+            head = newNode
+        } else if index == count - 1 {
+            tail = newNode
+        }
+        count += 1
+    }
+
     public func removeHead() -> T? {
         let value = head?.value
         head = head?.next
@@ -80,23 +110,6 @@ public final class LinkedList<T> {
         head = nil
         tail = nil
         count = 0
-    }
-
-    public func node(at index: Int) -> ListNode<T>? {
-        guard 0..<self.count ~= index else {
-            return nil
-        }
-
-        var count: Int = 0
-        var node = head
-        while node != nil {
-            if count == index {
-                return node
-            }
-            node = node!.next
-            count += 1
-        }
-        return nil
     }
 
     public subscript(index: Int) -> T? {

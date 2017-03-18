@@ -45,6 +45,23 @@ class LinkedListTests: XCTestCase {
         XCTAssertEqual(list.tail?.value, newValue)
         XCTAssertEqual(list[list.count - 1], newValue)
     }
+    
+    func testNodeAtIndex() {
+        _ = (0..<list.count).map {
+            let node = list.node(at: $0)
+            XCTAssertEqual(node?.value, LinkedListTests.integers[$0])
+            if $0 == 0 {
+                XCTAssertNotNil(node?.next)
+                XCTAssertNil(node?.previous)
+            } else if $0 == list.count - 1 {
+                XCTAssertNil(node?.next)
+                XCTAssertNotNil(node?.previous)
+            } else {
+                XCTAssertNotNil(node?.next)
+                XCTAssertNotNil(node?.previous)
+            }
+        }
+    }
 
     func testRemoveHead() {
         XCTAssertEqual(list.removeHead(), 5)
@@ -65,23 +82,6 @@ class LinkedListTests: XCTestCase {
     func testRemoveAll() {
         list.removeAll()
         XCTAssertEqual(list.count, 0)
-    }
-
-    func testNodeAtIndex() {
-        _ = (0..<list.count).map {
-            let node = list.node(at: $0)
-            XCTAssertEqual(node?.value, LinkedListTests.integers[$0])
-            if $0 == 0 {
-                XCTAssertNotNil(node?.next)
-                XCTAssertNil(node?.previous)
-            } else if $0 == list.count - 1 {
-                XCTAssertNil(node?.next)
-                XCTAssertNotNil(node?.previous)
-            } else {
-                XCTAssertNotNil(node?.next)
-                XCTAssertNotNil(node?.previous)
-            }
-        }
     }
 
     func testSubscript() {

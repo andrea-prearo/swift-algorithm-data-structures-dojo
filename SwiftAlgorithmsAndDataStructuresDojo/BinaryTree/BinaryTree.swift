@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - BinaryTreeNode
 public class BinaryTreeNode<T> {
     var data: T
     var left: BinaryTreeNode<T>? = nil
@@ -25,12 +26,12 @@ extension BinaryTreeNode: CustomStringConvertible {
     }
 }
 
+// MARK: - BinaryTree
 /*
  `BinaryTree` has no concept of order. Operations such as `insert`, `remove` and `search`
  have no meaning here. These operations are implemented in `BinarySearchTree`, which will
  introduce and leverage the concept of order.
  */
-
 public class BinaryTree<T> {
     let root: BinaryTreeNode<T>?
 

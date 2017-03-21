@@ -12,12 +12,11 @@ public enum QueueError: Error {
     case outOfSpace
 }
 
+// MARK: - Queue
 /*
  `Queue` is using a `LinkedList` as the underlying mechanism for storing data.
- Because of this all operations are executed in constant time O(1).
+ This allows all operations to be executed in constant time O(1).
  */
-
-// MARK: - Queue
 public final class Queue<T> {
     fileprivate let list = LinkedList<T>()
     fileprivate var maxSize: Int = Int.max

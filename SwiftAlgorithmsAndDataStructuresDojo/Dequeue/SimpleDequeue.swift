@@ -8,17 +8,16 @@
 
 import Foundation
 
+// MARK: - SimpleDequeue
 /*
  `SimpleDequeue` is using an `Array` as the underlying mechanism for storing data.
- Because of this, the `pop` and `pushFront` operations are not optimized.
- The `push` and `popBack` operationd require constant time O(1), as we are just appending 
- to the array or removing the last element.
- The `pop` and `pushFront` operations, instead, require linear time O(n) because `Array`
- needs to rearrange the entire array after removing the first item and when inserting an
- element anywhere but at the end.
+ Because of this, the `pop` and `pushFront` operations are not optimized:
+ - The `push` and `popBack` operationd require constant time O(1), as we are just appending
+   to the array or removing the last element.
+ - The `pop` and `pushFront` operations, instead, require linear time O(n) because `Array`
+   needs to rearrange the entire array after removing the first item and when inserting an
+   element anywhere but at the end.
  */
-
-// MARK: - Queue
 public final class SimpleDequeue<T> {
     fileprivate var items: [T] = []
     fileprivate var maxSize: Int = Int.max

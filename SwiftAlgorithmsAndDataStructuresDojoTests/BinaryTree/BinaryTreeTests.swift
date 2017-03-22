@@ -14,6 +14,17 @@ class BinaryTreeTests: XCTestCase {
     static let preOrder: [Character] = ["F", "B", "A", "D", "C", "E", "G", "I", "H"]
     static let postOrder: [Character] = ["A", "C", "E", "D", "B", "H", "I", "G", "F"]
     static let levelOrder: [Character] = ["F", "B", "G", "A", "D", "I", "C", "E", "H"]
+    static let nodes = [
+        BinaryTreeNode<Character>(data: "F"),
+        BinaryTreeNode<Character>(data: "B"),
+        BinaryTreeNode<Character>(data: "G"),
+        BinaryTreeNode<Character>(data: "A"),
+        BinaryTreeNode<Character>(data: "D"),
+        BinaryTreeNode<Character>(data: "C"),
+        BinaryTreeNode<Character>(data: "E"),
+        BinaryTreeNode<Character>(data: "I"),
+        BinaryTreeNode<Character>(data: "H")
+    ]
 
     lazy var tree: BinaryTree<Character> = {
         let root = BinaryTreeNode<Character>(data: "F")
@@ -27,36 +38,71 @@ class BinaryTreeTests: XCTestCase {
         root.right?.right?.left = BinaryTreeNode<Character>(data: "H")
         return BinaryTree<Character>(root: root)
     }()
+    
+    func testBinarySearchTreeNodeEquality() {
+        XCTAssertEqual(BinaryTreeTests.nodes.first, tree.root)
+        XCTAssertNotEqual(BinaryTreeTests.nodes.last, tree.root)
+    }
+
+    func testExpressibleByArrayLiteral() {
+        let tree = BinarySearchTree<Int, String>()
+        let nodes = [
+            BinarySearchTreeNode(key: 32, value: "ATP"),
+            BinarySearchTreeNode(key: 4, value: "FTJ"),
+            BinarySearchTreeNode(key: 75, value: "ORN"),
+            BinarySearchTreeNode(key: 42, value: "THA")
+        ]
+        for node in nodes {
+            tree.insert(newNode: node)
+        }
+        let newTree = BinarySearchTree(arrayLiteral: BinarySearchTreeNode(key: 32, value: "ATP"),
+                                       BinarySearchTreeNode(key: 4, value: "FTJ"),
+                                       BinarySearchTreeNode(key: 75, value: "ORN"),
+                                       BinarySearchTreeNode(key: 42, value: "THA"))
+        XCTAssertEqual(newTree, tree)
+    }
 
     func testTraverseInOrder() {
         var nodes: [Character] = []
-        tree.traverseInOrder(tree.root) { [weak self] data in
+        tree.traverseInOrder(tree.root) { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
-            nodes.append(strongSelf.dataToString(data))
+            nodes.append(strongSelf.dump(node))
         }
         XCTAssertEqual(nodes, BinaryTreeTests.inOrder)
     }
-    
-    func testTraverseLevelOrder() {
+
+    func testTraverseLevelOrderNil() {
+        let tree = BinaryTree<Character>()
         var nodes: [Character] = []
-        tree.traverseLevelOrder(tree.root) { [weak self] data in
+        tree.traverseInOrder(tree.root) { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
-            nodes.append(strongSelf.dataToString(data))
+            nodes.append(strongSelf.dump(node))
+        }
+        XCTAssertEqual(nodes, [])
+    }
+
+    func testTraverseLevelOrder() {
+        var nodes: [Character] = []
+        tree.traverseLevelOrder(tree.root) { [weak self] node in
+            guard let strongSelf = self else {
+                return
+            }
+            nodes.append(strongSelf.dump(node))
         }
         XCTAssertEqual(nodes, BinaryTreeTests.levelOrder)
     }
 
     func testTraversePreOrder() {
         var nodes: [Character] = []
-        tree.traversePreOrder(tree.root) { [weak self] data in
+        tree.traversePreOrder(tree.root) { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
-            nodes.append(strongSelf.dataToString(data))
+            nodes.append(strongSelf.dump(node))
             return
         }
         XCTAssertEqual(nodes, BinaryTreeTests.preOrder)
@@ -64,46 +110,52 @@ class BinaryTreeTests: XCTestCase {
 
     func testTraversePostOrder() {
         var nodes: [Character] = []
-        tree.traversePostOrder(tree.root) { [weak self] data in
+        tree.traversePostOrder(tree.root) { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
-            nodes.append(strongSelf.dataToString(data))
+            nodes.append(strongSelf.dump(node))
         }
         XCTAssertEqual(nodes, BinaryTreeTests.postOrder)
     }
 
     func testTraverseBreadthFirst() {
         var nodes: [Character] = []
-        tree.traverseBreadthFirst() { [weak self] data in
+        tree.traverseBreadthFirst() { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
-            nodes.append(strongSelf.dataToString(data))
+            nodes.append(strongSelf.dump(node))
         }
         XCTAssertEqual(nodes, BinaryTreeTests.levelOrder)
     }
 
     func testTraverseDepthFirst() {
         var nodes: [Character] = []
-        tree.traverseDepthFirst() { [weak self] data in
+        tree.traverseDepthFirst() { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
-            nodes.append(strongSelf.dataToString(data))
+            nodes.append(strongSelf.dump(node))
         }
         XCTAssertEqual(nodes, BinaryTreeTests.inOrder)
+    }
+
+    func testDescription() {
+        let description = BinaryTreeTests.inOrder.map { String($0) }.joined(separator: ", ")
+        XCTAssertEqual(tree.description, description)
+        XCTAssertEqual(BinaryTree<Character>().description, "")
     }
 }
 
 fileprivate extension BinaryTreeTests {
-    func dataToString(_ data: Character?) -> Character {
-        let node: Character = {
-            guard let data = data else {
+    func dump(_ node: BinaryTreeNode<Character>?) -> Character {
+        let nodeDump: Character = {
+            guard let node = node else {
                 return "-"
             }
-            return data
+            return node.data
         }()
-        return node
+        return nodeDump
     }
 }

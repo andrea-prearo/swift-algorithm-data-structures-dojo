@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - BinaryTreeNode
-public class BinaryTreeNode<T> {
+public class BinaryTreeNode<T: Equatable> {
     var data: T
     var left: BinaryTreeNode<T>? = nil
     var right: BinaryTreeNode<T>? = nil
@@ -26,13 +26,20 @@ extension BinaryTreeNode: CustomStringConvertible {
     }
 }
 
+// MARK: - BinaryTreeNode + Equatable
+extension BinaryTreeNode: Equatable {}
+
+public func ==<T: Equatable>(lhs: BinaryTreeNode<T>, rhs: BinaryTreeNode<T>) -> Bool {
+    return lhs.data == rhs.data
+}
+
 // MARK: - BinaryTree
 /*
  `BinaryTree` has no concept of order. Operations such as `insert`, `remove` and `search`
  have no meaning here. These operations are implemented in `BinarySearchTree`, which will
  introduce and leverage the concept of order.
  */
-public class BinaryTree<T> {
+public class BinaryTree<T: Equatable> {
     var root: BinaryTreeNode<T>?
 
     public init(root: BinaryTreeNode<T>?) {
@@ -43,16 +50,18 @@ public class BinaryTree<T> {
         self.init(root: nil)
     }
 
-    public func traverseInOrder(_ node: BinaryTreeNode<T>?, visit: ((T?) -> Void)? = nil) {
+    public func traverseInOrder(_ node: BinaryTreeNode<T>?,
+                                visit: ((BinaryTreeNode<T>?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
         traverseInOrder(node.left, visit: visit)
-        visit?(node.data)
+        visit?(node)
         traverseInOrder(node.right, visit: visit)
     }
     
-    public func traverseLevelOrder(_ node: BinaryTreeNode<T>?, visit: ((T?) -> Void)? = nil) {
+    public func traverseLevelOrder(_ node: BinaryTreeNode<T>?,
+                                   visit: ((BinaryTreeNode<T>?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
@@ -60,7 +69,7 @@ public class BinaryTree<T> {
         try? queue.push(node)
         while !queue.isEmpty {
             let node = queue.pop()
-            visit?(node?.data)
+            visit?(node)
             if let leftNode = node?.left {
                 try? queue.push(leftNode)
             }
@@ -70,46 +79,49 @@ public class BinaryTree<T> {
         }
     }
 
-    public func traversePreOrder(_ node: BinaryTreeNode<T>?, visit: ((T?) -> Void)? = nil) {
+    public func traversePreOrder(_ node: BinaryTreeNode<T>?,
+                                 visit: ((BinaryTreeNode<T>?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
-        visit?(node.data)
+        visit?(node)
         traversePreOrder(node.left, visit: visit)
         traversePreOrder(node.right, visit: visit)
     }
 
-    public func traversePostOrder(_ node: BinaryTreeNode<T>?, visit: ((T?) -> Void)? = nil) {
+    public func traversePostOrder(_ node: BinaryTreeNode<T>?,
+                                  visit: ((BinaryTreeNode<T>?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
         traversePostOrder(node.left, visit: visit)
         traversePostOrder(node.right, visit: visit)
-        visit?(node.data)
+        visit?(node)
     }
 
-    public func traverseBreadthFirst(visit: ((T?) -> Void)? = nil) {
+    public func traverseBreadthFirst(visit: ((BinaryTreeNode<T>?) -> Void)? = nil) {
         traverseLevelOrder(root, visit: visit)
     }
 
-    public func traverseDepthFirst(visit: ((T?) -> Void)? = nil) {
+    public func traverseDepthFirst(visit: ((BinaryTreeNode<T>?) -> Void)? = nil) {
         traverseInOrder(root, visit: visit)
     }
 }
 
+// MARK: - Private Methods
 fileprivate extension BinaryTree {
     func dump() -> String {
-        var nodes: [String] = []
-        traverseInOrder(root) { data in
-            let node: String = {
-                guard let data = data else {
+        var nodeDumps: [String] = []
+        traverseInOrder(root) { node in
+            let nodeDump: String = {
+                guard let node = node else {
                     return "-"
                 }
-                return String(describing: data)
+                return node.description
             }()
-            nodes.append(node)
+            nodeDumps.append(nodeDump)
         }
-        return nodes.joined(separator: ", ")
+        return nodeDumps.joined(separator: ", ")
     }
 }
 
@@ -118,4 +130,24 @@ extension BinaryTree: CustomStringConvertible {
     public var description: String {
         return dump()
     }
+}
+
+// MARK: - BinaryTree to Array
+extension BinaryTree {
+    var array: [BinaryTreeNode<T>] {
+        var nodes: [BinaryTreeNode<T>] = []
+        traverseInOrder(root) { node in
+            if let node = node {
+                nodes.append(node)
+            }
+        }
+        return nodes
+    }
+}
+
+// MARK: - BinaryTree + Equatable
+extension BinaryTree: Equatable {}
+
+public func ==<T>(lhs: BinaryTree<T>, rhs: BinaryTree<T>) -> Bool {
+    return lhs.array == rhs.array
 }

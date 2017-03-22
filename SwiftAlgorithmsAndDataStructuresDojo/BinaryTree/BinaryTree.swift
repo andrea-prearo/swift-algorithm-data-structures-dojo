@@ -33,22 +33,26 @@ extension BinaryTreeNode: CustomStringConvertible {
  introduce and leverage the concept of order.
  */
 public class BinaryTree<T> {
-    let root: BinaryTreeNode<T>?
+    var root: BinaryTreeNode<T>?
 
-    public init(root: BinaryTreeNode<T>) {
+    public init(root: BinaryTreeNode<T>?) {
         self.root = root
     }
 
-    public func traverseInOrder(_ node: BinaryTreeNode<T>?, handler: ((T?) -> Void)? = nil) {
+    public convenience init() {
+        self.init(root: nil)
+    }
+
+    public func traverseInOrder(_ node: BinaryTreeNode<T>?, visit: ((T?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
-        traverseInOrder(node.left, handler: handler)
-        handler?(node.data)
-        traverseInOrder(node.right, handler: handler)
+        traverseInOrder(node.left, visit: visit)
+        visit?(node.data)
+        traverseInOrder(node.right, visit: visit)
     }
     
-    public func traverseLevelOrder(_ node: BinaryTreeNode<T>?, handler: ((T?) -> Void)? = nil) {
+    public func traverseLevelOrder(_ node: BinaryTreeNode<T>?, visit: ((T?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
@@ -56,7 +60,7 @@ public class BinaryTree<T> {
         try? queue.push(node)
         while !queue.isEmpty {
             let node = queue.pop()
-            handler?(node?.data)
+            visit?(node?.data)
             if let leftNode = node?.left {
                 try? queue.push(leftNode)
             }
@@ -66,30 +70,30 @@ public class BinaryTree<T> {
         }
     }
 
-    public func traversePreOrder(_ node: BinaryTreeNode<T>?, handler: ((T?) -> Void)? = nil) {
+    public func traversePreOrder(_ node: BinaryTreeNode<T>?, visit: ((T?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
-        handler?(node.data)
-        traversePreOrder(node.left, handler: handler)
-        traversePreOrder(node.right, handler: handler)
+        visit?(node.data)
+        traversePreOrder(node.left, visit: visit)
+        traversePreOrder(node.right, visit: visit)
     }
 
-    public func traversePostOrder(_ node: BinaryTreeNode<T>?, handler: ((T?) -> Void)? = nil) {
+    public func traversePostOrder(_ node: BinaryTreeNode<T>?, visit: ((T?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
-        traversePostOrder(node.left, handler: handler)
-        traversePostOrder(node.right, handler: handler)
-        handler?(node.data)
+        traversePostOrder(node.left, visit: visit)
+        traversePostOrder(node.right, visit: visit)
+        visit?(node.data)
     }
 
-    public func traverseBreadthFirst(handler: ((T?) -> Void)? = nil) {
-        traverseLevelOrder(root, handler: handler)
+    public func traverseBreadthFirst(visit: ((T?) -> Void)? = nil) {
+        traverseLevelOrder(root, visit: visit)
     }
 
-    public func traverseDepthFirst(handler: ((T?) -> Void)? = nil) {
-        traverseInOrder(root, handler: handler)
+    public func traverseDepthFirst(visit: ((T?) -> Void)? = nil) {
+        traverseInOrder(root, visit: visit)
     }
 }
 

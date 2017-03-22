@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AF171D3B1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF171D311E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.framework */; };
-		AF171D401E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF171D3F1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.swift */; };
 		AF171D421E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h in Headers */ = {isa = PBXBuildFile; fileRef = AF171D341E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF171D4D1E7AB01A0075C5F3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */; };
 		AF72A18C1E7C8197007F8FA2 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A18B1E7C8197007F8FA2 /* Queue.swift */; };
@@ -41,7 +40,6 @@
 		AF171D341E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftAlgorithmsAndDataStructuresDojo.h; sourceTree = "<group>"; };
 		AF171D351E7AAF670075C5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF171D3A1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftAlgorithmsAndDataStructuresDojoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF171D3F1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftAlgorithmsAndDataStructuresDojoTests.swift; sourceTree = "<group>"; };
 		AF171D411E7AAF670075C5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
 		AF171D551E7AB1100075C5F3 /* LinkedList.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LinkedList.playground; sourceTree = "<group>"; };

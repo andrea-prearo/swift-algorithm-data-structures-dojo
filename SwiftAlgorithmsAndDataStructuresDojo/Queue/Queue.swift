@@ -42,7 +42,7 @@ public final class Queue<T> {
         self.maxSize = maxSize
     }
 
-    public convenience init(array: Array<T>) {
+    public convenience init(array: [T]) {
         self.init()
 
         for element in array {
@@ -96,7 +96,7 @@ extension Queue: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - Queue to Array<T>
+// MARK: - Queue to [T]
 extension Queue {
     var array: [T] {
         return list.array

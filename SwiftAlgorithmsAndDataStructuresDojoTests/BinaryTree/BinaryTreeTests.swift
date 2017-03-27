@@ -39,27 +39,26 @@ class BinaryTreeTests: XCTestCase {
         return BinaryTree<Character>(root: root)
     }()
     
-    func testBinarySearchTreeNodeEquality() {
+    func testNodeEquality() {
         XCTAssertEqual(BinaryTreeTests.nodes.first, tree.root)
         XCTAssertNotEqual(BinaryTreeTests.nodes.last, tree.root)
     }
-
-    func testExpressibleByArrayLiteral() {
-        let tree = BinarySearchTree<Int, String>()
-        let nodes = [
-            BinarySearchTreeNode(key: 32, value: "ATP"),
-            BinarySearchTreeNode(key: 4, value: "FTJ"),
-            BinarySearchTreeNode(key: 75, value: "ORN"),
-            BinarySearchTreeNode(key: 42, value: "THA")
-        ]
-        for node in nodes {
-            tree.insert(newNode: node)
-        }
-        let newTree = BinarySearchTree(arrayLiteral: BinarySearchTreeNode(key: 32, value: "ATP"),
-                                       BinarySearchTreeNode(key: 4, value: "FTJ"),
-                                       BinarySearchTreeNode(key: 75, value: "ORN"),
-                                       BinarySearchTreeNode(key: 42, value: "THA"))
-        XCTAssertEqual(newTree, tree)
+    
+    func testEquality() {
+        let tree1 = BinaryTree<Int>()
+        tree1.root = BinaryTreeNode<Int>(data: 2)
+        tree1.root?.left = BinaryTreeNode<Int>(data: 1)
+        tree1.root?.right = BinaryTreeNode<Int>(data: 3)
+        let tree2 = BinaryTree<Int>()
+        tree2.root = BinaryTreeNode<Int>(data: 4)
+        tree2.root?.left = BinaryTreeNode<Int>(data: 2)
+        tree2.root?.right = BinaryTreeNode<Int>(data: 8)
+        let tree3 = BinaryTree<Int>()
+        tree3.root = BinaryTreeNode<Int>(data: 2)
+        tree3.root?.left = BinaryTreeNode<Int>(data: 1)
+        tree3.root?.right = BinaryTreeNode<Int>(data: 3)
+        XCTAssertEqual(tree1, tree3)
+        XCTAssertNotEqual(tree1, tree2)
     }
 
     func testTraverseInOrder() {

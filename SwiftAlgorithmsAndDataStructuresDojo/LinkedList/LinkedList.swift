@@ -42,7 +42,7 @@ public final class LinkedList<T> {
         return head == nil
     }
 
-    public convenience init(array: Array<T>) {
+    public convenience init(array: [T]) {
         self.init()
         
         for element in array {
@@ -204,7 +204,7 @@ extension LinkedList: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - LinkedList to Array<T>
+// MARK: - LinkedList to [T]
 extension LinkedList {
     var array: [T] {
         var items: [T] = []

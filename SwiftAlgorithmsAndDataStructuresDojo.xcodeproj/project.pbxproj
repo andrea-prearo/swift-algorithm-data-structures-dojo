@@ -44,7 +44,6 @@
 		AF171D3A1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftAlgorithmsAndDataStructuresDojoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF171D411E7AAF670075C5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
-		AF171D551E7AB1100075C5F3 /* LinkedList.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = LinkedList.playground; sourceTree = "<group>"; };
 		AF4365CC1E81FD070081ACB3 /* BinarySearchTreeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinarySearchTreeTest.swift; path = BinarySearchTree/BinarySearchTreeTest.swift; sourceTree = "<group>"; };
 		AF72A18B1E7C8197007F8FA2 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		AF72A18E1E7C8413007F8FA2 /* QueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
@@ -132,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */,
-				AF171D551E7AB1100075C5F3 /* LinkedList.playground */,
 			);
 			path = LinkedList;
 			sourceTree = "<group>";

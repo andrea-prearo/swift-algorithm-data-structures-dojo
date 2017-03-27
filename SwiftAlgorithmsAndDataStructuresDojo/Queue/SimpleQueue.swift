@@ -41,7 +41,7 @@ public final class SimpleQueue<T> {
         self.maxSize = maxSize
     }
 
-    public convenience init(array: Array<T>) {
+    public convenience init(array: [T]) {
         self.init()
 
         for element in array {
@@ -102,7 +102,7 @@ extension SimpleQueue: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - SimpleQueue to Array<T>
+// MARK: - SimpleQueue to [T]
 extension SimpleQueue {
     var array: [T] {
         return items

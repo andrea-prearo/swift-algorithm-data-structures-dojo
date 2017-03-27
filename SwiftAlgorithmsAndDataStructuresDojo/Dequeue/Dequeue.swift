@@ -42,7 +42,7 @@ public final class Dequeue<T> {
         self.maxSize = maxSize
     }
 
-    public convenience init(array: Array<T>) {
+    public convenience init(array: [T]) {
         self.init()
 
         for element in array {
@@ -110,7 +110,7 @@ extension Dequeue: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - Dequeue to Array<T>
+// MARK: - Dequeue to [T]
 extension Dequeue {
     var array: [T] {
         return list.array

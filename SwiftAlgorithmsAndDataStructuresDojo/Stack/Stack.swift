@@ -34,7 +34,7 @@ public final class Stack<T> {
         self.maxSize = maxSize
     }
 
-    public convenience init(array: Array<T>) {
+    public convenience init(array: [T]) {
         self.init()
 
         for element in array {
@@ -95,7 +95,7 @@ extension Stack: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - Stack to Array<T>
+// MARK: - Stack to [T]
 extension Stack {
     var array: [T] {
         return items

@@ -3,7 +3,7 @@
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Prearo, Andrea on 3/16/17.
-//
+//  Copyright © 2017 Andrea Prearo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

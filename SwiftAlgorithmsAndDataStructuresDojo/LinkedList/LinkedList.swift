@@ -3,7 +3,7 @@
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Prearo, Andrea on 3/12/17.
-//
+//  Copyright © 2017 Andrea Prearo. All rights reserved.
 //
 
 import Foundation

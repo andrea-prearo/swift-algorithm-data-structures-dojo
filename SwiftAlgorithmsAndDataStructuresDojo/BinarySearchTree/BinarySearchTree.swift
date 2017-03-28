@@ -17,7 +17,8 @@ public class BinarySearchTreeNode<K: Comparable,T: Equatable> {
     var value: T
     var left: BinarySearchTreeNode<K,T>? = nil
     var right: BinarySearchTreeNode<K,T>? = nil
-    
+    var parent: BinarySearchTreeNode<K,T>? = nil
+
     public init(key: K, value: T) {
         self.key = key
         self.value = value
@@ -148,20 +149,20 @@ public extension BinarySearchTree {
         }
     }
 
-    public func minimum() -> BinarySearchTreeNode<K,T>? {
-        var node = root
-        while node?.left != nil {
-            node = node?.left
+    public func minimum(_ node: BinarySearchTreeNode<K,T>? = nil) -> BinarySearchTreeNode<K,T>? {
+        var target = (node == nil) ? root : node
+        while target?.left != nil {
+            target = target?.left
         }
-        return node
+        return target
     }
 
-    public func maximum() -> BinarySearchTreeNode<K,T>? {
-        var node = root
-        while node?.right != nil {
-            node = node?.right
+    public func maximum(_ node: BinarySearchTreeNode<K,T>? = nil) -> BinarySearchTreeNode<K,T>? {
+        var target = (node == nil) ? root : node
+        while target?.right != nil {
+            target = target?.right
         }
-        return node
+        return target
     }
 
     public func insert(newNode: BinarySearchTreeNode<K,T>) {
@@ -184,11 +185,31 @@ public extension BinarySearchTree {
             root = newNode
             return
         }
+        newNode.parent = target
         if key <= target.key {
             target.left = newNode
         } else {
             target.right = newNode
         }
+    }
+
+    public func remove(node: BinarySearchTreeNode<K,T>) {
+        if node.left == nil {
+            transplant(from: node, to: node.right)
+            return
+        } else if node.right == nil {
+            transplant(from: node, to: node.left)
+            return
+        }
+        guard let target = minimum(node.right) else {
+            return
+        }
+        if target.parent != node {
+            transplant(from: target, to: target.right)
+        }
+        transplant(from: node, to: target)
+        target.left = node.left
+        target.left?.parent = target
     }
 }
 
@@ -206,6 +227,17 @@ fileprivate extension BinarySearchTree {
             nodeDumps.append(nodeDump)
         }
         return nodeDumps.joined(separator: ", ")
+    }
+
+    func transplant(from: BinarySearchTreeNode<K,T>, to: BinarySearchTreeNode<K,T>?) {
+        if from.parent == nil {
+            root = to
+        } else if from == from.parent?.left {
+            from.parent?.left = to
+        } else {
+            from.parent?.right = to
+        }
+        to?.parent = from.parent
     }
 }
 

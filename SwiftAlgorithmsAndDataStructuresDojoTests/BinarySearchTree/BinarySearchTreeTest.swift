@@ -147,7 +147,11 @@ class BinarySearchTreeTests: XCTestCase {
         XCTAssertEqual(BinarySearchTree<Int, String>().description, "")
     }
 
-    func testSearch() {
+    func testSearchFailure() {
+        XCTAssertEqual(tree.search(tree.root, key: 1), nil)
+    }
+
+    func testSearchSuccess() {
         for node in BinarySearchTreeTests.nodes {
             XCTAssertEqual(tree.search(tree.root, key: node.key), node)
         }
@@ -177,7 +181,31 @@ class BinarySearchTreeTests: XCTestCase {
         var insertOrder = (0..<nodes.count).map { $0 }
         insertOrder.shuffle()
         _ = (0..<insertOrder.count).map { tree.insert(newNode: nodes[$0]) }
-        testSearch()
+        testSearchSuccess()
+    }
+
+    func testRemove() {
+        let leftmostLeaf = tree.minimum()!
+        tree.remove(node: leftmostLeaf)
+        XCTAssertEqual(tree.minimum(), tree.search(tree.root, key: 42))
+        let rightmostLeaf = tree.maximum()!
+        tree.remove(node: rightmostLeaf)
+        XCTAssertEqual(tree.maximum(), tree.search(tree.root, key: 79))
+        let leftRightSubtree = tree.search(tree.root, key: 56)!
+        tree.remove(node: leftRightSubtree)
+        XCTAssertEqual(tree.minimum(), tree.search(tree.root, key: 42))
+        tree.remove(node: tree.maximum()!)
+        XCTAssertEqual(tree.maximum(), tree.search(tree.root, key: 72))
+        tree.remove(node: tree.root!)
+        XCTAssertEqual(tree.root, tree.search(tree.root, key: 69))
+    }
+
+    func testRemoveLeftSubtree() {
+        tree.remove(node: tree.search(tree.root, key: 42)!)
+    }
+
+    func testRemoveRightSubtree() {
+        tree.remove(node: tree.search(tree.root, key: 79)!)
     }
 }
 

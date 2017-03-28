@@ -211,6 +211,10 @@ public extension BinarySearchTree {
         target.left = node.left
         target.left?.parent = target
     }
+
+    public subscript(key: K) -> BinarySearchTreeNode<K,T>? {
+        return search(root, key: key)
+    }
 }
 
 // MARK: - Private Methods

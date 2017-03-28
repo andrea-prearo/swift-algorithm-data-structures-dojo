@@ -17,3 +17,4 @@ A collection of Data Structures and Algorithms.
  - all operations have O(1) time complexity.
 * [Binary Tree](https://github.com/andrea-prearo/swift-algorithm-data-structures-dojo/blob/master/BinaryTree/BinaryTree.swift).  
 * [Binary Search Tree](https://github.com/andrea-prearo/swift-algorithm-data-structures-dojo/blob/master/BinarySearchTree/BinarySearchTree.swift).  
+- `search`, `insert`, `remove` operations.

@@ -207,6 +207,12 @@ class BinarySearchTreeTests: XCTestCase {
     func testRemoveRightSubtree() {
         tree.remove(node: tree.search(tree.root, key: 79)!)
     }
+
+    func testSubscript() {
+        for node in BinarySearchTreeTests.nodes {
+            XCTAssertEqual(tree[node.key], node)
+        }
+    }
 }
 
 fileprivate extension BinarySearchTreeTests {

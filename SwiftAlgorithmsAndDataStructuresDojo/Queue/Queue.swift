@@ -14,8 +14,8 @@ public enum QueueError: Error {
 
 // MARK: - Queue
 /*
- `Queue` is using a `LinkedList` as the underlying mechanism for storing data.
- This allows all operations to be executed in constant time O(1).
+ `Queue` is an optimized implementation which uses a linked list as the underlying storage 
+ mechanism to allow all operations to be executed in constant time **O(1)**.
  */
 public final class Queue<T> {
     fileprivate let list = LinkedList<T>()

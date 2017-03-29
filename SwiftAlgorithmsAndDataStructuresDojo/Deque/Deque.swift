@@ -14,8 +14,8 @@ public enum DequeueError: Error {
 
 // MARK: - Deque
 /*
- `Deque` is using a (doubly) `LinkedList` as the underlying mechanism for storing data.
- This allows all operations to be executed in constant time O(1).
+ `Queue` is an optimized implementation which uses a (doubly) linked list as the underlying 
+ storage mechanism to allow all operations to be executed in constant time **O(1)**.
  */
 public final class Deque<T> {
     fileprivate let list = LinkedList<T>()

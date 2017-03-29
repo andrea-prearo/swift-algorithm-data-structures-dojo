@@ -21,7 +21,7 @@ public final class Stack<T> {
         return items.count
     }
 
-    public var top: T? {
+    public var peek: T? {
         return items.last
     }
     

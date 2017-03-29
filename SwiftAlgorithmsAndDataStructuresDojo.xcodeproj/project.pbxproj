@@ -15,12 +15,12 @@
 		AF72A18F1E7C8413007F8FA2 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A18E1E7C8413007F8FA2 /* QueueTests.swift */; };
 		AF72A1911E7C89BA007F8FA2 /* SimpleQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A1901E7C89BA007F8FA2 /* SimpleQueue.swift */; };
 		AF72A1931E7C89F4007F8FA2 /* SimpleQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A1921E7C89F4007F8FA2 /* SimpleQueueTests.swift */; };
-		AF72A1971E7C9285007F8FA2 /* Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A1951E7C9285007F8FA2 /* Dequeue.swift */; };
-		AF72A1981E7C9285007F8FA2 /* SimpleDequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A1961E7C9285007F8FA2 /* SimpleDequeue.swift */; };
-		AF72A19C1E7C928E007F8FA2 /* DequeueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A19A1E7C928E007F8FA2 /* DequeueTests.swift */; };
-		AF72A19D1E7C928E007F8FA2 /* SimpleDequeueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A19B1E7C928E007F8FA2 /* SimpleDequeueTests.swift */; };
 		AF97CC2F1E7FF3B9006A754D /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF97CC2E1E7FF3B9006A754D /* BinaryTree.swift */; };
 		AF97CC311E7FFE76006A754D /* BinaryTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF97CC301E7FFE76006A754D /* BinaryTreeTests.swift */; };
+		AFB2B93B1E8BD327002EDC16 /* DequeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2B9391E8BD327002EDC16 /* DequeTests.swift */; };
+		AFB2B93C1E8BD327002EDC16 /* SimpleDequeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2B93A1E8BD327002EDC16 /* SimpleDequeTests.swift */; };
+		AFB2B9411E8BD32F002EDC16 /* Deque.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2B93E1E8BD32F002EDC16 /* Deque.swift */; };
+		AFB2B9431E8BD32F002EDC16 /* SimpleDeque.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2B9401E8BD32F002EDC16 /* SimpleDeque.swift */; };
 		AFD7EADD1E7C0629002069CD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EADC1E7C0629002069CD /* Stack.swift */; };
 		AFD7EAE31E7C105B002069CD /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EAE21E7C105B002069CD /* LinkedListTests.swift */; };
 		AFD7EAE51E7C1143002069CD /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EAE41E7C1143002069CD /* StackTests.swift */; };
@@ -49,12 +49,12 @@
 		AF72A18E1E7C8413007F8FA2 /* QueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		AF72A1901E7C89BA007F8FA2 /* SimpleQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleQueue.swift; sourceTree = "<group>"; };
 		AF72A1921E7C89F4007F8FA2 /* SimpleQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleQueueTests.swift; sourceTree = "<group>"; };
-		AF72A1951E7C9285007F8FA2 /* Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dequeue.swift; sourceTree = "<group>"; };
-		AF72A1961E7C9285007F8FA2 /* SimpleDequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDequeue.swift; sourceTree = "<group>"; };
-		AF72A19A1E7C928E007F8FA2 /* DequeueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeueTests.swift; sourceTree = "<group>"; };
-		AF72A19B1E7C928E007F8FA2 /* SimpleDequeueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDequeueTests.swift; sourceTree = "<group>"; };
 		AF97CC2E1E7FF3B9006A754D /* BinaryTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinaryTree.swift; path = BinaryTree/BinaryTree.swift; sourceTree = "<group>"; };
 		AF97CC301E7FFE76006A754D /* BinaryTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinaryTreeTests.swift; path = BinaryTree/BinaryTreeTests.swift; sourceTree = "<group>"; };
+		AFB2B9391E8BD327002EDC16 /* DequeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeTests.swift; sourceTree = "<group>"; };
+		AFB2B93A1E8BD327002EDC16 /* SimpleDequeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDequeTests.swift; sourceTree = "<group>"; };
+		AFB2B93E1E8BD32F002EDC16 /* Deque.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
+		AFB2B9401E8BD32F002EDC16 /* SimpleDeque.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDeque.swift; sourceTree = "<group>"; };
 		AFD7EADC1E7C0629002069CD /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Stack/Stack.swift; sourceTree = "<group>"; };
 		AFD7EAE21E7C105B002069CD /* LinkedListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
 		AFD7EAE41E7C1143002069CD /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackTests.swift; path = Stack/StackTests.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 			children = (
 				AFDCED291E81552E00C2CA26 /* BinarySearchTree */,
 				AF97CC2C1E7FF392006A754D /* BinaryTree */,
-				AF72A1941E7C9285007F8FA2 /* Dequeue */,
+				AFB2B93D1E8BD32F002EDC16 /* Deque */,
 				AF171D4B1E7AB01A0075C5F3 /* LinkedList */,
 				AF72A18A1E7C8197007F8FA2 /* Queue */,
 				AFD7EADB1E7C060C002069CD /* Stack */,
@@ -118,7 +118,7 @@
 			children = (
 				AFDCED2A1E81553B00C2CA26 /* BinarySearchTree */,
 				AF97CC2D1E7FF39E006A754D /* BinaryTree */,
-				AF72A1991E7C928E007F8FA2 /* Dequeue */,
+				AFB2B9381E8BD327002EDC16 /* Deque */,
 				AFD7EAE11E7C105B002069CD /* LinkedList */,
 				AF72A18D1E7C8413007F8FA2 /* Queue */,
 				AFD7EADE1E7C101E002069CD /* Stack */,
@@ -153,24 +153,6 @@
 			path = Queue;
 			sourceTree = "<group>";
 		};
-		AF72A1941E7C9285007F8FA2 /* Dequeue */ = {
-			isa = PBXGroup;
-			children = (
-				AF72A1951E7C9285007F8FA2 /* Dequeue.swift */,
-				AF72A1961E7C9285007F8FA2 /* SimpleDequeue.swift */,
-			);
-			path = Dequeue;
-			sourceTree = "<group>";
-		};
-		AF72A1991E7C928E007F8FA2 /* Dequeue */ = {
-			isa = PBXGroup;
-			children = (
-				AF72A19A1E7C928E007F8FA2 /* DequeueTests.swift */,
-				AF72A19B1E7C928E007F8FA2 /* SimpleDequeueTests.swift */,
-			);
-			path = Dequeue;
-			sourceTree = "<group>";
-		};
 		AF97CC2C1E7FF392006A754D /* BinaryTree */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +167,24 @@
 				AF97CC301E7FFE76006A754D /* BinaryTreeTests.swift */,
 			);
 			name = BinaryTree;
+			sourceTree = "<group>";
+		};
+		AFB2B9381E8BD327002EDC16 /* Deque */ = {
+			isa = PBXGroup;
+			children = (
+				AFB2B9391E8BD327002EDC16 /* DequeTests.swift */,
+				AFB2B93A1E8BD327002EDC16 /* SimpleDequeTests.swift */,
+			);
+			path = Deque;
+			sourceTree = "<group>";
+		};
+		AFB2B93D1E8BD32F002EDC16 /* Deque */ = {
+			isa = PBXGroup;
+			children = (
+				AFB2B93E1E8BD32F002EDC16 /* Deque.swift */,
+				AFB2B9401E8BD32F002EDC16 /* SimpleDeque.swift */,
+			);
+			path = Deque;
 			sourceTree = "<group>";
 		};
 		AFD7EADB1E7C060C002069CD /* Stack */ = {
@@ -338,13 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF72A1971E7C9285007F8FA2 /* Dequeue.swift in Sources */,
 				AF97CC2F1E7FF3B9006A754D /* BinaryTree.swift in Sources */,
+				AFB2B9411E8BD32F002EDC16 /* Deque.swift in Sources */,
+				AFB2B9431E8BD32F002EDC16 /* SimpleDeque.swift in Sources */,
 				AFD7EADD1E7C0629002069CD /* Stack.swift in Sources */,
 				AF72A18C1E7C8197007F8FA2 /* Queue.swift in Sources */,
 				AFDCED2C1E81556500C2CA26 /* BinarySearchTree.swift in Sources */,
 				AF171D4D1E7AB01A0075C5F3 /* LinkedList.swift in Sources */,
-				AF72A1981E7C9285007F8FA2 /* SimpleDequeue.swift in Sources */,
 				AF72A1911E7C89BA007F8FA2 /* SimpleQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,10 +354,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF4365CD1E81FD070081ACB3 /* BinarySearchTreeTest.swift in Sources */,
+				AFB2B93B1E8BD327002EDC16 /* DequeTests.swift in Sources */,
+				AFB2B93C1E8BD327002EDC16 /* SimpleDequeTests.swift in Sources */,
 				AF97CC311E7FFE76006A754D /* BinaryTreeTests.swift in Sources */,
 				AFD7EAE31E7C105B002069CD /* LinkedListTests.swift in Sources */,
-				AF72A19C1E7C928E007F8FA2 /* DequeueTests.swift in Sources */,
-				AF72A19D1E7C928E007F8FA2 /* SimpleDequeueTests.swift in Sources */,
 				AFD7EAE51E7C1143002069CD /* StackTests.swift in Sources */,
 				AF72A18F1E7C8413007F8FA2 /* QueueTests.swift in Sources */,
 				AF72A1931E7C89F4007F8FA2 /* SimpleQueueTests.swift in Sources */,

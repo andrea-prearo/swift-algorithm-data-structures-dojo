@@ -20,8 +20,8 @@ class StackTests: XCTestCase {
         XCTAssertTrue(Stack<String>().isEmpty)
     }
 
-    func testTop() {
-        XCTAssertEqual(stack.top, 8)
+    func testPeek() {
+        XCTAssertEqual(stack.peek, 8)
     }
 
     func testInitFromArray() {
@@ -39,7 +39,7 @@ class StackTests: XCTestCase {
         let newValue = 1000
         do {
             try stack.push(newValue)
-            XCTAssertEqual(stack.top, newValue)
+            XCTAssertEqual(stack.peek, newValue)
         } catch let error {
             XCTFail(error.localizedDescription)
         }

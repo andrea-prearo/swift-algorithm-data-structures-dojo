@@ -1,5 +1,5 @@
 //
-//  SimpleDequeue.swift
+//  SimpleDeque.swift
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Prearo, Andrea on 3/17/17.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - SimpleDequeue
+// MARK: - SimpleDeque
 /*
- `SimpleDequeue` is using an `Array` as the underlying mechanism for storing data.
+ `SimpleDeque` is using an `Array` as the underlying mechanism for storing data.
  Because of this, the `pop` and `pushFront` operations are not optimized:
  - The `push` and `popBack` operationd require constant time O(1), as we are just appending
    to the array or removing the last element.
@@ -18,7 +18,7 @@ import Foundation
    needs to rearrange the entire array after removing the first item and when inserting an
    element anywhere but at the end.
  */
-public final class SimpleDequeue<T> {
+public final class SimpleDeque<T> {
     fileprivate var items: [T] = []
     fileprivate var maxSize: Int = Int.max
 
@@ -84,8 +84,8 @@ public final class SimpleDequeue<T> {
     }
 }
 
-// MARK: - SimpleDequeue + CustomStringConvertible
-extension SimpleDequeue: CustomStringConvertible {
+// MARK: - SimpleDeque + CustomStringConvertible
+extension SimpleDeque: CustomStringConvertible {
     public var description: String {
         var string = "["
         _ = (0..<items.count).map {
@@ -98,8 +98,8 @@ extension SimpleDequeue: CustomStringConvertible {
     }
 }
 
-// MARK: - SimpleDequeue + Sequence
-extension SimpleDequeue: Sequence {
+// MARK: - SimpleDeque + Sequence
+extension SimpleDeque: Sequence {
     public func makeIterator() -> AnyIterator<T> {
         return AnyIterator {
             return self.pop()
@@ -107,8 +107,8 @@ extension SimpleDequeue: Sequence {
     }
 }
 
-// MARK: - SimpleDequeue + ExpressibleByArrayLiteral
-extension SimpleDequeue: ExpressibleByArrayLiteral {
+// MARK: - SimpleDeque + ExpressibleByArrayLiteral
+extension SimpleDeque: ExpressibleByArrayLiteral {
     public convenience init(arrayLiteral elements: T...) {
         self.init()
 
@@ -118,8 +118,8 @@ extension SimpleDequeue: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - SimpleDequeue to [T]
-extension SimpleDequeue {
+// MARK: - SimpleDeque to [T]
+extension SimpleDeque {
     var array: [T] {
         return items
     }

@@ -1,5 +1,5 @@
 //
-//  Dequeue.swift
+//  deque.swift
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Prearo, Andrea on 3/17/17.
@@ -12,12 +12,12 @@ public enum DequeueError: Error {
     case outOfSpace
 }
 
-// MARK: - Dequeue
+// MARK: - Deque
 /*
- `Dequeue` is using a (doubly) `LinkedList` as the underlying mechanism for storing data.
+ `Deque` is using a (doubly) `LinkedList` as the underlying mechanism for storing data.
  This allows all operations to be executed in constant time O(1).
  */
-public final class Dequeue<T> {
+public final class Deque<T> {
     fileprivate let list = LinkedList<T>()
     fileprivate var maxSize: Int = Int.max
 
@@ -83,15 +83,15 @@ public final class Dequeue<T> {
     }
 }
 
-// MARK: - Dequeue + CustomStringConvertible
-extension Dequeue: CustomStringConvertible {
+// MARK: - Deque + CustomStringConvertible
+extension Deque: CustomStringConvertible {
     public var description: String {
         return list.description
     }
 }
 
-// MARK: - Dequeue + Sequence
-extension Dequeue: Sequence {
+// MARK: - Deque + Sequence
+extension Deque: Sequence {
     public func makeIterator() -> AnyIterator<T> {
         return AnyIterator {
             return self.pop()
@@ -99,8 +99,8 @@ extension Dequeue: Sequence {
     }
 }
 
-// MARK: - Dequeue + ExpressibleByArrayLiteral
-extension Dequeue: ExpressibleByArrayLiteral {
+// MARK: - Deque + ExpressibleByArrayLiteral
+extension Deque: ExpressibleByArrayLiteral {
     public convenience init(arrayLiteral elements: T...) {
         self.init()
 
@@ -110,8 +110,8 @@ extension Dequeue: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - Dequeue to [T]
-extension Dequeue {
+// MARK: - Deque to [T]
+extension Deque {
     var array: [T] {
         return list.array
     }

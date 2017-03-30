@@ -28,7 +28,7 @@ public final class Queue<T> {
     public var front: T? {
         return list.head?.value
     }
-    
+
     public var back: T? {
         return list.tail?.value
     }

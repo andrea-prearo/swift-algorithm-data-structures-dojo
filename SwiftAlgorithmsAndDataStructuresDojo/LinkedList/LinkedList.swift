@@ -44,7 +44,7 @@ public final class LinkedList<T> {
 
     public convenience init(array: [T]) {
         self.init()
-        
+
         for element in array {
             self.append(element)
         }
@@ -65,7 +65,7 @@ public final class LinkedList<T> {
         guard 0..<self.count ~= index else {
             return nil
         }
-        
+
         var count: Int = 0
         var node = head
         while node != nil {
@@ -197,7 +197,7 @@ extension LinkedList: Sequence {
 extension LinkedList: ExpressibleByArrayLiteral {
     public convenience init(arrayLiteral elements: T...) {
         self.init()
-        
+
         for element in elements {
             self.append(element)
         }

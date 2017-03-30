@@ -27,7 +27,7 @@ public final class SimpleQueue<T> {
     public var front: T? {
         return items.first
     }
-    
+
     public var back: T? {
         return items.last
     }

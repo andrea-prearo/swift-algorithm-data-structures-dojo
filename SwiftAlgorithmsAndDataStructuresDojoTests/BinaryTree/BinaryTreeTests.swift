@@ -38,12 +38,12 @@ class BinaryTreeTests: XCTestCase {
         root.right?.right?.left = BinaryTreeNode<Character>(data: "H")
         return BinaryTree<Character>(root: root)
     }()
-    
+
     func testNodeEquality() {
         XCTAssertEqual(BinaryTreeTests.nodes.first, tree.root)
         XCTAssertNotEqual(BinaryTreeTests.nodes.last, tree.root)
     }
-    
+
     func testEquality() {
         let tree1 = BinaryTree<Int>()
         tree1.root = BinaryTreeNode<Int>(data: 2)
@@ -120,7 +120,7 @@ class BinaryTreeTests: XCTestCase {
 
     func testTraverseBreadthFirst() {
         var nodes: [Character] = []
-        tree.traverseBreadthFirst() { [weak self] node in
+        tree.traverseBreadthFirst { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
@@ -131,7 +131,7 @@ class BinaryTreeTests: XCTestCase {
 
     func testTraverseDepthFirst() {
         var nodes: [Character] = []
-        tree.traverseDepthFirst() { [weak self] node in
+        tree.traverseDepthFirst { [weak self] node in
             guard let strongSelf = self else {
                 return
             }

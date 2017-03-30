@@ -24,7 +24,7 @@ public final class Stack<T> {
     public var peek: T? {
         return items.last
     }
-    
+
     public var isEmpty: Bool {
         return items.count == 0
     }

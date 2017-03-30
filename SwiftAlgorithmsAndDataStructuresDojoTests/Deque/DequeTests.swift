@@ -23,7 +23,7 @@ class DequeTests: XCTestCase {
     func testFront() {
         XCTAssertEqual(deque.front, 5)
     }
-    
+
     func testBack() {
         XCTAssertEqual(deque.back, 8)
     }

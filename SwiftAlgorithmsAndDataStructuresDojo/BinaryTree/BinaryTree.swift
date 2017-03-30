@@ -59,7 +59,7 @@ public class BinaryTree<T: Equatable> {
         visit?(node)
         traverseInOrder(node.right, visit: visit)
     }
-    
+
     public func traverseLevelOrder(_ node: BinaryTreeNode<T>?,
                                    visit: ((BinaryTreeNode<T>?) -> Void)? = nil) {
         guard let node = node else {

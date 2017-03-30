@@ -28,7 +28,7 @@ public final class Deque<T> {
     public var front: T? {
         return list.head?.value
     }
-    
+
     public var back: T? {
         return list.tail?.value
     }
@@ -56,7 +56,7 @@ public final class Deque<T> {
         }
         list.append(item)
     }
-    
+
     public func pushFront(_ item: T) throws {
         if list.count == maxSize {
             throw DequeueError.outOfSpace
@@ -70,7 +70,7 @@ public final class Deque<T> {
         }
         return list.removeHead()
     }
-    
+
     public func popBack() -> T? {
         if isEmpty {
             return nil

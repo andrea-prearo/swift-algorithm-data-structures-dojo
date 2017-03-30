@@ -23,7 +23,7 @@ class QueueTests: XCTestCase {
     func testFront() {
         XCTAssertEqual(queue.front, 5)
     }
-    
+
     func testBack() {
         XCTAssertEqual(queue.back, 8)
     }

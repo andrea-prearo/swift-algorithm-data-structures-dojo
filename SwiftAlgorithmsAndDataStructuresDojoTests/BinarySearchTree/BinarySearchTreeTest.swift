@@ -10,10 +10,14 @@ import XCTest
 @testable import SwiftAlgorithmsAndDataStructuresDojo
 
 class BinarySearchTreeTests: XCTestCase {
-    static let inOrder: [String] = ["[23, C]", "[42, B]", "[50, H]", "[56, D]", "[58, I]", "[59, A]", "[69, G]", "[72, J]", "[79, E]", "[90, F]"]
-    static let preOrder: [String] = ["[59, A]", "[42, B]", "[23, C]", "[56, D]", "[50, H]", "[58, I]", "[79, E]", "[69, G]", "[72, J]", "[90, F]"]
-    static let postOrder: [String] = ["[23, C]", "[50, H]", "[58, I]", "[56, D]", "[42, B]", "[72, J]", "[69, G]", "[90, F]", "[79, E]", "[59, A]"]
-    static let levelOrder: [String] = ["[59, A]", "[42, B]", "[79, E]", "[23, C]", "[56, D]", "[69, G]", "[90, F]", "[50, H]", "[58, I]", "[72, J]"]
+    static let inOrder: [String] = [
+        "[23, C]", "[42, B]", "[50, H]", "[56, D]", "[58, I]", "[59, A]", "[69, G]", "[72, J]", "[79, E]", "[90, F]"]
+    static let preOrder: [String] = [
+        "[59, A]", "[42, B]", "[23, C]", "[56, D]", "[50, H]", "[58, I]", "[79, E]", "[69, G]", "[72, J]", "[90, F]"]
+    static let postOrder: [String] = [
+        "[23, C]", "[50, H]", "[58, I]", "[56, D]", "[42, B]", "[72, J]", "[69, G]", "[90, F]", "[79, E]", "[59, A]"]
+    static let levelOrder: [String] = [
+        "[59, A]", "[42, B]", "[79, E]", "[23, C]", "[56, D]", "[69, G]", "[90, F]", "[50, H]", "[58, I]", "[72, J]"]
     static let nodes = [
         BinarySearchTreeNode(key: 59, value: "A"),
         BinarySearchTreeNode(key: 42, value: "B"),
@@ -122,7 +126,7 @@ class BinarySearchTreeTests: XCTestCase {
 
     func testTraverseBreadthFirst() {
         var nodes: [String] = []
-        tree.traverseBreadthFirst() { [weak self] node in
+        tree.traverseBreadthFirst { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
@@ -133,7 +137,7 @@ class BinarySearchTreeTests: XCTestCase {
 
     func testTraverseDepthFirst() {
         var nodes: [String] = []
-        tree.traverseDepthFirst() { [weak self] node in
+        tree.traverseDepthFirst { [weak self] node in
             guard let strongSelf = self else {
                 return
             }
@@ -156,7 +160,7 @@ class BinarySearchTreeTests: XCTestCase {
             XCTAssertEqual(tree.search(tree.root, key: node.key), node)
         }
     }
-    
+
     func testMinimum() {
         XCTAssertEqual(tree.minimum(), BinarySearchTreeNode(key: 23, value: "C"))
     }
@@ -176,7 +180,7 @@ class BinarySearchTreeTests: XCTestCase {
             BinarySearchTreeNode(key: 6, value: "F"),
             BinarySearchTreeNode(key: 7, value: "G"),
             BinarySearchTreeNode(key: 8, value: "H"),
-            BinarySearchTreeNode(key: 9, value: "I"),
+            BinarySearchTreeNode(key: 9, value: "I")
         ]
         var insertOrder = (0..<nodes.count).map { $0 }
         insertOrder.shuffle()
@@ -230,7 +234,7 @@ fileprivate extension BinarySearchTreeTests {
 extension Array {
     mutating func shuffle() {
         for _ in 0..<count {
-            sort { (_,_) in arc4random() < arc4random() }
+            sort { (_, _) in arc4random() < arc4random() }
         }
     }
 }

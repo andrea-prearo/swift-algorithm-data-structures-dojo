@@ -12,12 +12,12 @@ import Foundation
  The `key` property of `BinarySearchTreeNode` will be used for ordering the nodes.
  This requires `key` to be of `Comparable` type so we can define an ordering for the nodes.
  */
-public class BinarySearchTreeNode<K: Comparable,T: Equatable> {
+public class BinarySearchTreeNode<K: Comparable, T: Equatable> {
     var key: K
     var value: T
-    var left: BinarySearchTreeNode<K,T>? = nil
-    var right: BinarySearchTreeNode<K,T>? = nil
-    var parent: BinarySearchTreeNode<K,T>? = nil
+    var left: BinarySearchTreeNode<K, T>? = nil
+    var right: BinarySearchTreeNode<K, T>? = nil
+    var parent: BinarySearchTreeNode<K, T>? = nil
 
     public init(key: K, value: T) {
         self.key = key
@@ -35,7 +35,7 @@ extension BinarySearchTreeNode: CustomStringConvertible {
 // MARK: - BinarySearchTreeNode + Equatable
 extension BinarySearchTreeNode: Equatable {}
 
-public func ==<K: Comparable,T: Equatable>(lhs: BinarySearchTreeNode<K,T>, rhs: BinarySearchTreeNode<K,T>) -> Bool {
+public func ==<K: Comparable, T: Equatable>(lhs: BinarySearchTreeNode<K, T>, rhs: BinarySearchTreeNode<K, T>) -> Bool {
     guard lhs.key == rhs.key, lhs.value == lhs.value else {
         return false
     }
@@ -49,9 +49,9 @@ public func ==<K: Comparable,T: Equatable>(lhs: BinarySearchTreeNode<K,T>, rhs: 
  implement operations such as `insert`, `remove` and `search`.
  */
 public class BinarySearchTree<K: Comparable, T: Equatable> {
-    var root: BinarySearchTreeNode<K,T>?
+    var root: BinarySearchTreeNode<K, T>?
 
-    public init(root: BinarySearchTreeNode<K,T>?) {
+    public init(root: BinarySearchTreeNode<K, T>?) {
         self.root = root
     }
 
@@ -59,7 +59,7 @@ public class BinarySearchTree<K: Comparable, T: Equatable> {
         self.init(root: nil)
     }
 
-    public convenience init(array: [BinarySearchTreeNode<K,T>]) {
+    public convenience init(array: [BinarySearchTreeNode<K, T>]) {
         self.init(root: nil)
 
         for node in array {
@@ -67,7 +67,7 @@ public class BinarySearchTree<K: Comparable, T: Equatable> {
         }
     }
 
-    public convenience init(arrayLiteral elements: BinarySearchTreeNode<K,T>...) {
+    public convenience init(arrayLiteral elements: BinarySearchTreeNode<K, T>...) {
         self.init(root: nil)
 
         for element in elements {
@@ -75,8 +75,8 @@ public class BinarySearchTree<K: Comparable, T: Equatable> {
         }
     }
 
-    public func traverseInOrder(_ node: BinarySearchTreeNode<K,T>?,
-                                visit: ((BinarySearchTreeNode<K,T>?) -> Void)? = nil) {
+    public func traverseInOrder(_ node: BinarySearchTreeNode<K, T>?,
+                                visit: ((BinarySearchTreeNode<K, T>?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
@@ -85,12 +85,12 @@ public class BinarySearchTree<K: Comparable, T: Equatable> {
         traverseInOrder(node.right, visit: visit)
     }
 
-    public func traverseLevelOrder(_ node: BinarySearchTreeNode<K,T>?,
-                                   visit: ((BinarySearchTreeNode<K,T>?) -> Void)? = nil) {
+    public func traverseLevelOrder(_ node: BinarySearchTreeNode<K, T>?,
+                                   visit: ((BinarySearchTreeNode<K, T>?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
-        let queue = Queue<BinarySearchTreeNode<K,T>>()
+        let queue = Queue<BinarySearchTreeNode<K, T>>()
         try? queue.push(node)
         while !queue.isEmpty {
             let node = queue.pop()
@@ -104,8 +104,8 @@ public class BinarySearchTree<K: Comparable, T: Equatable> {
         }
     }
 
-    public func traversePreOrder(_ node: BinarySearchTreeNode<K,T>?,
-                                 visit: ((BinarySearchTreeNode<K,T>?) -> Void)? = nil) {
+    public func traversePreOrder(_ node: BinarySearchTreeNode<K, T>?,
+                                 visit: ((BinarySearchTreeNode<K, T>?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
@@ -114,8 +114,8 @@ public class BinarySearchTree<K: Comparable, T: Equatable> {
         traversePreOrder(node.right, visit: visit)
     }
 
-    public func traversePostOrder(_ node: BinarySearchTreeNode<K,T>?,
-                                  visit: ((BinarySearchTreeNode<K,T>?) -> Void)? = nil) {
+    public func traversePostOrder(_ node: BinarySearchTreeNode<K, T>?,
+                                  visit: ((BinarySearchTreeNode<K, T>?) -> Void)? = nil) {
         guard let node = node else {
             return
         }
@@ -124,18 +124,18 @@ public class BinarySearchTree<K: Comparable, T: Equatable> {
         visit?(node)
     }
 
-    public func traverseBreadthFirst(visit: ((BinarySearchTreeNode<K,T>?) -> Void)? = nil) {
+    public func traverseBreadthFirst(visit: ((BinarySearchTreeNode<K, T>?) -> Void)? = nil) {
         traverseLevelOrder(root, visit: visit)
     }
 
-    public func traverseDepthFirst(visit: ((BinarySearchTreeNode<K,T>?) -> Void)? = nil) {
+    public func traverseDepthFirst(visit: ((BinarySearchTreeNode<K, T>?) -> Void)? = nil) {
         traverseInOrder(root, visit: visit)
     }
 }
 
 // MARK: - BinarySearchTree: Order-based operations
 public extension BinarySearchTree {
-    public func search(_ node: BinarySearchTreeNode<K,T>?, key: K) -> BinarySearchTreeNode<K,T>? {
+    public func search(_ node: BinarySearchTreeNode<K, T>?, key: K) -> BinarySearchTreeNode<K, T>? {
         guard let node = node else {
             return nil
         }
@@ -149,7 +149,7 @@ public extension BinarySearchTree {
         }
     }
 
-    public func minimum(_ node: BinarySearchTreeNode<K,T>? = nil) -> BinarySearchTreeNode<K,T>? {
+    public func minimum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
         var target = (node == nil) ? root : node
         while target?.left != nil {
             target = target?.left
@@ -157,7 +157,7 @@ public extension BinarySearchTree {
         return target
     }
 
-    public func maximum(_ node: BinarySearchTreeNode<K,T>? = nil) -> BinarySearchTreeNode<K,T>? {
+    public func maximum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
         var target = (node == nil) ? root : node
         while target?.right != nil {
             target = target?.right
@@ -165,12 +165,12 @@ public extension BinarySearchTree {
         return target
     }
 
-    public func insert(newNode: BinarySearchTreeNode<K,T>) {
+    public func insert(newNode: BinarySearchTreeNode<K, T>) {
         insert(key: newNode.key, value: newNode.value)
     }
 
     public func insert(key: K, value: T) {
-        var leaf: BinarySearchTreeNode<K,T>? = nil
+        var leaf: BinarySearchTreeNode<K, T>? = nil
         var node = root
         while node != nil {
             leaf = node
@@ -193,26 +193,26 @@ public extension BinarySearchTree {
         }
     }
 
-    public func remove(node: BinarySearchTreeNode<K,T>) {
+    public func remove(node: BinarySearchTreeNode<K, T>) {
         if node.left == nil {
-            transplant(from: node, to: node.right)
+            transplant(source: node, dest: node.right)
             return
         } else if node.right == nil {
-            transplant(from: node, to: node.left)
+            transplant(source: node, dest: node.left)
             return
         }
         guard let target = minimum(node.right) else {
             return
         }
         if target.parent != node {
-            transplant(from: target, to: target.right)
+            transplant(source: target, dest: target.right)
         }
-        transplant(from: node, to: target)
+        transplant(source: node, dest: target)
         target.left = node.left
         target.left?.parent = target
     }
 
-    public subscript(key: K) -> BinarySearchTreeNode<K,T>? {
+    public subscript(key: K) -> BinarySearchTreeNode<K, T>? {
         return search(root, key: key)
     }
 }
@@ -233,15 +233,15 @@ fileprivate extension BinarySearchTree {
         return nodeDumps.joined(separator: ", ")
     }
 
-    func transplant(from: BinarySearchTreeNode<K,T>, to: BinarySearchTreeNode<K,T>?) {
-        if from.parent == nil {
-            root = to
-        } else if from == from.parent?.left {
-            from.parent?.left = to
+    func transplant(source: BinarySearchTreeNode<K, T>, dest: BinarySearchTreeNode<K, T>?) {
+        if source.parent == nil {
+            root = dest
+        } else if source == source.parent?.left {
+            source.parent?.left = dest
         } else {
-            from.parent?.right = to
+            source.parent?.right = dest
         }
-        to?.parent = from.parent
+        dest?.parent = source.parent
     }
 }
 
@@ -254,8 +254,8 @@ extension BinarySearchTree: CustomStringConvertible {
 
 // MARK: - BinarySearchTree to Array
 extension BinarySearchTree {
-    var array: [BinarySearchTreeNode<K,T>] {
-        var nodes: [BinarySearchTreeNode<K,T>] = []
+    var array: [BinarySearchTreeNode<K, T>] {
+        var nodes: [BinarySearchTreeNode<K, T>] = []
         traverseInOrder(root) { node in
             if let node = node {
                 nodes.append(node)
@@ -268,6 +268,6 @@ extension BinarySearchTree {
 // MARK: - BinarySearchTree + Equatable
 extension BinarySearchTree: Equatable {}
 
-public func ==<K: Comparable,T: Equatable>(lhs: BinarySearchTree<K,T>, rhs: BinarySearchTree<K,T>) -> Bool {
+public func ==<K: Comparable, T: Equatable>(lhs: BinarySearchTree<K, T>, rhs: BinarySearchTree<K, T>) -> Bool {
     return lhs.array == rhs.array
 }

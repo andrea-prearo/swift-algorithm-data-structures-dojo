@@ -23,7 +23,7 @@ class SimpleDequeTests: XCTestCase {
     func testFront() {
         XCTAssertEqual(deque.front, 5)
     }
-    
+
     func testBack() {
         XCTAssertEqual(deque.back, 8)
     }
@@ -65,7 +65,7 @@ class SimpleDequeTests: XCTestCase {
         _ = (0..<deque.count).map { XCTAssertEqual(deque.pop(), SimpleDequeTests.integers[$0]) }
         XCTAssertNil(deque.pop())
     }
-    
+
     func testPopBack() {
         let maxIndex = StackTests.integers.count - 1
         _ = (0..<deque.count).map { XCTAssertEqual(deque.popBack(), SimpleDequeTests.integers[maxIndex - $0]) }

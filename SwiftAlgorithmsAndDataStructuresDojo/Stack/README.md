@@ -1,7 +1,8 @@
 Stack
 =====
 
-Implementation of a **LIFO** data structure.
+Implementation of a Stack (**LIFO**) data structure.
+
 It uses an array as the underlying storage mechanism.
 
 Operations:

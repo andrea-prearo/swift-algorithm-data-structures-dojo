@@ -1,7 +1,7 @@
 Swift Algorithms and Data Structures Dojo
 =========================================
 
-A collection of Data Structures and Algorithms.
+Implementing Data Structures and Algorithms in Swift for fun.
 
 * [Stack](./SwiftAlgorithmsAndDataStructuresDojo/Stack/README.md)  
 * [Queue](./SwiftAlgorithmsAndDataStructuresDojo/Queue/README.md)  

@@ -1,7 +1,7 @@
 Queue
 =====
 
-Implementation of a **FIFO** data structure.
+Implementation of a Queue (**FIFO**) data structure.
 
 `SimpleQueue` uses an array as the underlying storage mechanism.
 Because of this, the `pop` operation is not optimized:

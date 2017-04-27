@@ -1,6 +1,6 @@
 # .slather.yml
 
 coverage_service: cobertura_xml
-output_directory: path/to/xml_report
 xcodeproj: SwiftAlgorithmsAndDataStructuresDojo.xcodeproj
 scheme: SwiftAlgorithmsAndDataStructuresDojo
+output_directory: Slather

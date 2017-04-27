@@ -1,5 +1,5 @@
 //
-//  deque.swift
+//  Deque.swift
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Prearo, Andrea on 3/17/17.

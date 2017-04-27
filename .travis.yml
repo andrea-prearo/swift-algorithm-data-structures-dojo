@@ -4,4 +4,4 @@ script:
   - xcodebuild build test -project SwiftAlgorithmsAndDataStructuresDojo.xcodeproj -scheme SwiftAlgorithmsAndDataStructuresDojo -destination "platform=iOS Simulator,name=iPhone 7,OS=10.2" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
 after_success:
   - slather
-  - bash <(curl -s https://codecov.io/bash) -f path/to/xml_report/cobertura.xml -X coveragepy -X gcov -X xcode
+  - bash <(curl -s https://codecov.io/bash)

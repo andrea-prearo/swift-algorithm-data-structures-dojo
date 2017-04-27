@@ -1,7 +1,10 @@
+# .travis.yml
+
 language: objective-c
 osx_image: xcode8.2
 script:
 script:
   - xcodebuild -scheme SwiftAlgorithmsAndDataStructuresDojo -project SwiftAlgorithmsAndDataStructuresDojo.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' build test
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - slather
+  - bash <(curl -s https://codecov.io/bash) -f Slather/cobertura.xml -X coveragepy -X gcov -X xcode

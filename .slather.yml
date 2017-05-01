@@ -4,3 +4,5 @@ coverage_service: cobertura_xml
 xcodeproj: SwiftAlgorithmsAndDataStructuresDojo.xcodeproj
 scheme: SwiftAlgorithmsAndDataStructuresDojo
 output_directory: Slather
+ignore:
+  - SwiftAlgorithmsAndDataStructuresDojoTests/*

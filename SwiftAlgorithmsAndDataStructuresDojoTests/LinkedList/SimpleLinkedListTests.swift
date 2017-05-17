@@ -1,23 +1,23 @@
 //
-//  LinkedListTests.swift
+//  SimpleLinkedListTests.swift
 //  SwiftAlgorithmsAndDataStructuresDojoTests
 //
-//  Created by Andrea Prearo on 3/12/17.
+//  Created by Andrea Prearo on 5/16/17.
 //  Copyright © 2017 Andrea Prearo. All rights reserved.
 //
 
 import XCTest
 @testable import SwiftAlgorithmsAndDataStructuresDojo
 
-class LinkedListTests: XCTestCase {
+class SimpleLinkedListTests: XCTestCase {
     static let integers = [5, -1, 8, 3, -24, 32, 0, 8]
-    lazy var list: LinkedList<Int> = {
-        return LinkedList<Int>(array: LinkedListTests.integers)
+    lazy var list: SimpleLinkedList<Int> = {
+        return SimpleLinkedList<Int>(array: SimpleLinkedListTests.integers)
     }()
 
     func testIsEmpty() {
-        XCTAssertTrue(LinkedList<Int>().isEmpty)
-        XCTAssertTrue(LinkedList<String>().isEmpty)
+        XCTAssertTrue(SimpleLinkedList<Int>().isEmpty)
+        XCTAssertTrue(SimpleLinkedList<String>().isEmpty)
     }
 
     func testHead() {
@@ -29,14 +29,14 @@ class LinkedListTests: XCTestCase {
     }
 
     func testInitFromArray() {
-        XCTAssertEqual(list.count, LinkedListTests.integers.count)
-        XCTAssertEqual(list.array, LinkedListTests.integers)
+        XCTAssertEqual(list.count, SimpleLinkedListTests.integers.count)
+        XCTAssertEqual(list.array, SimpleLinkedListTests.integers)
     }
 
     func testCount() {
-        XCTAssertEqual(list.count, LinkedListTests.integers.count)
-        XCTAssertEqual(LinkedList<Int>().count, 0)
-        XCTAssertEqual(LinkedList(arrayLiteral: 1, 2, 3).count, 3)
+        XCTAssertEqual(list.count, SimpleLinkedListTests.integers.count)
+        XCTAssertEqual(SimpleLinkedList<Int>().count, 0)
+        XCTAssertEqual(SimpleLinkedList(arrayLiteral: 1, 2, 3).count, 3)
     }
 
     func testAppend() {
@@ -49,16 +49,13 @@ class LinkedListTests: XCTestCase {
     func testNodeAtIndex() {
         _ = (0..<list.count).map {
             let node = list.node(at: $0)
-            XCTAssertEqual(node?.value, LinkedListTests.integers[$0])
+            XCTAssertEqual(node?.value, SimpleLinkedListTests.integers[$0])
             if $0 == 0 {
                 XCTAssertNotNil(node?.next)
-                XCTAssertNil(node?.previous)
             } else if $0 == list.count - 1 {
                 XCTAssertNil(node?.next)
-                XCTAssertNotNil(node?.previous)
             } else {
                 XCTAssertNotNil(node?.next)
-                XCTAssertNotNil(node?.previous)
             }
         }
         XCTAssertNil(list.node(at: -1))
@@ -70,7 +67,7 @@ class LinkedListTests: XCTestCase {
         let headValue = 1000
         let tailValue = headValue
         let integers = [0, 1, 2, 3]
-        let list = LinkedList<Int>(array: integers)
+        let list = SimpleLinkedList<Int>(array: integers)
         XCTAssertTrue(list.insert(headValue, at: 0))
         XCTAssertEqual(list.count, integers.count + 1)
         XCTAssertEqual(list.head?.value, headValue)
@@ -85,7 +82,7 @@ class LinkedListTests: XCTestCase {
 
     func testRemoveHead() {
         XCTAssertEqual(list.removeHead(), 5)
-        var integers = LinkedListTests.integers
+        var integers = SimpleLinkedListTests.integers
         XCTAssertEqual(list.count, integers.count - 1)
         integers.removeFirst()
         XCTAssertEqual(list.array, integers)
@@ -93,7 +90,7 @@ class LinkedListTests: XCTestCase {
 
     func testRemoveTail() {
         XCTAssertEqual(list.removeTail(), 8)
-        var integers = LinkedListTests.integers
+        var integers = SimpleLinkedListTests.integers
         XCTAssertEqual(list.count, integers.count - 1)
         integers.removeLast()
         XCTAssertEqual(list.array, integers)
@@ -106,7 +103,7 @@ class LinkedListTests: XCTestCase {
 
     func testSubscript() {
         _ = (0..<list.count).map {
-            XCTAssertEqual(list[$0], LinkedListTests.integers[$0])
+            XCTAssertEqual(list[$0], SimpleLinkedListTests.integers[$0])
         }
         XCTAssertNil(list[-1])
         XCTAssertNil(list[list.count])
@@ -114,7 +111,7 @@ class LinkedListTests: XCTestCase {
 
     func testReverse() {
         list.reverse()
-        let integers = LinkedListTests.integers.reversed().map { $0 }
+        let integers = SimpleLinkedListTests.integers.reversed().map { $0 }
         _ = (0..<list.count).map {
             XCTAssertEqual(list[$0], integers[$0])
         }
@@ -122,31 +119,31 @@ class LinkedListTests: XCTestCase {
 
     func testReversed() {
         let reversedList = list.reversed()
-        let integers = LinkedListTests.integers.reversed().map { $0 }
+        let integers = SimpleLinkedListTests.integers.reversed().map { $0 }
         _ = (0..<list.count).map {
             XCTAssertEqual(reversedList[$0], integers[$0])
         }
     }
 
     func testDescription() {
-        XCTAssertEqual(list.description, String(describing: LinkedListTests.integers))
+        XCTAssertEqual(list.description, String(describing: SimpleLinkedListTests.integers))
     }
 
     func testSequence() {
         var index = 0
         for item in list {
-            XCTAssertEqual(item, LinkedListTests.integers[index])
+            XCTAssertEqual(item, SimpleLinkedListTests.integers[index])
             index += 1
         }
     }
 
     func testExpressibleByArrayLiteral() {
-        let list = LinkedList(arrayLiteral: 0, 1, 2, 3)
+        let list = SimpleLinkedList(arrayLiteral: 0, 1, 2, 3)
         XCTAssertEqual(list.count, 4)
         XCTAssertEqual(list.array, [0, 1, 2, 3])
     }
 
     func testAsArray() {
-        XCTAssertEqual(list.array, LinkedListTests.integers)
+        XCTAssertEqual(list.array, SimpleLinkedListTests.integers)
     }
 }

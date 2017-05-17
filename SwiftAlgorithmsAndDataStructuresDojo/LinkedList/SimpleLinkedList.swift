@@ -1,41 +1,40 @@
 //
-//  LinkedList.swift
+//  SimpleSimpleLinkedList.swift
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
-//  Created by Andrea Prearo on 3/12/17.
+//  Created by Andrea Prearo on 5/16/17.
 //  Copyright © 2017 Andrea Prearo. All rights reserved.
 //
 
 import Foundation
 
-// MARK: - ListNode
-public class ListNode<T> {
+// MARK: - SimpleListNode
+public class SimpleListNode<T> {
     var value: T
-    var next: ListNode?
-    weak var previous: ListNode?
+    var next: SimpleListNode?
 
     init(value: T) {
         self.value = value
         self.next = nil
     }
 
-    init(value: T, next: ListNode<T>?) {
+    init(value: T, next: SimpleListNode<T>?) {
         self.value = value
         self.next = next
     }
 }
 
-// MARK: - ListNode + CustomStringConvertible
-extension ListNode: CustomStringConvertible {
+// MARK: - SimpleListNode + CustomStringConvertible
+extension SimpleListNode: CustomStringConvertible {
     public var description: String {
         return String(describing: value)
     }
 }
 
-// MARK: - LinkedList
-public final class LinkedList<T> {
-    fileprivate(set) public var head: ListNode<T>?
-    fileprivate(set) public var tail: ListNode<T>?
+// MARK: - SimpleLinkedList
+public final class SimpleLinkedList<T> {
+    fileprivate(set) public var head: SimpleListNode<T>?
+    fileprivate(set) public var tail: SimpleListNode<T>?
     fileprivate(set) public var count: Int = 0
 
     public var isEmpty: Bool {
@@ -51,17 +50,16 @@ public final class LinkedList<T> {
     }
 
     public func append(_ value: T) {
-        let node = ListNode(value: value)
+        let node = SimpleListNode(value: value)
         if head == nil {
             head = node
         }
-        node.previous = tail
         tail?.next = node
         tail = node
         count += 1
     }
 
-    public func node(at index: Int) -> ListNode<T>? {
+    public func node(at index: Int) -> SimpleListNode<T>? {
         guard 0..<self.count ~= index else {
             return nil
         }
@@ -87,9 +85,7 @@ public final class LinkedList<T> {
             let nodeAtIndex = node(at: index) else {
             return false
         }
-        let newNode = ListNode(value: value, next: nodeAtIndex)
-        newNode.previous = nodeAtIndex.previous
-        nodeAtIndex.previous = newNode
+        let newNode = SimpleListNode(value: value, next: nodeAtIndex)
         if index == 0 {
             head = newNode
         } else if index == count - 1 {
@@ -108,8 +104,17 @@ public final class LinkedList<T> {
 
     public func removeTail() -> T? {
         let value = tail?.value
-        tail?.previous?.next = nil
-        tail = tail?.previous
+        var currentNode = head
+        var currentTail: SimpleListNode<T>?
+        while currentNode != nil {
+            currentTail = currentNode
+            if currentNode?.next?.next == nil {
+                // currentNode?.next is the current tail
+                currentNode?.next = nil
+            }
+            currentNode = currentNode?.next
+        }
+        tail = currentTail
         count -= 1
         return value
     }
@@ -130,7 +135,7 @@ public final class LinkedList<T> {
     public func reverse() {
         tail = head
         var currentNode = head
-        var previousNode: ListNode<T>?
+        var previousNode: SimpleListNode<T>?
         while currentNode != nil {
             let next = currentNode!.next
             currentNode!.next = previousNode
@@ -140,19 +145,20 @@ public final class LinkedList<T> {
         head = previousNode
     }
 
-    public func reversed() -> LinkedList<T> {
-        let reverserdList = LinkedList<T>()
-        var currentNode = tail
+    public func reversed() -> SimpleLinkedList<T> {
+        let reverserdList = SimpleLinkedList<T>()
+        var currentNode = head
         while currentNode != nil {
             reverserdList.append(currentNode!.value)
-            currentNode = currentNode?.previous
+            currentNode = currentNode?.next
         }
+        reverserdList.reverse()
         return reverserdList
     }
 }
 
-// MARK: - LinkedList + CustomStringConvertible
-extension LinkedList: CustomStringConvertible {
+// MARK: - SimpleLinkedList + CustomStringConvertible
+extension SimpleLinkedList: CustomStringConvertible {
     public var description: String {
         var string = "["
         var node = head
@@ -167,13 +173,13 @@ extension LinkedList: CustomStringConvertible {
     }
 }
 
-// MARK: - ListNodeIterator
-public struct ListNodeIterator<T>: IteratorProtocol {
+// MARK: - SimpleListNodeIterator
+public struct SimpleListNodeIterator<T>: IteratorProtocol {
     public typealias Element = T
 
-    private var head: ListNode<Element>?
+    private var head: SimpleListNode<Element>?
 
-    fileprivate init(head: ListNode<T>?) {
+    fileprivate init(head: SimpleListNode<T>?) {
         self.head = head
     }
 
@@ -187,17 +193,17 @@ public struct ListNodeIterator<T>: IteratorProtocol {
     }
 }
 
-// MARK: - LinkedList + Sequence
-extension LinkedList: Sequence {
-    public typealias Iterator = ListNodeIterator<T>
+// MARK: - SimpleLinkedList + Sequence
+extension SimpleLinkedList: Sequence {
+    public typealias Iterator = SimpleListNodeIterator<T>
 
     public func makeIterator() -> Iterator {
         return Iterator(head: head)
     }
 }
 
-// MARK: - LinkedList + ExpressibleByArrayLiteral
-extension LinkedList: ExpressibleByArrayLiteral {
+// MARK: - SimpleLinkedList + ExpressibleByArrayLiteral
+extension SimpleLinkedList: ExpressibleByArrayLiteral {
     public convenience init(arrayLiteral elements: T...) {
         self.init()
 
@@ -207,8 +213,8 @@ extension LinkedList: ExpressibleByArrayLiteral {
     }
 }
 
-// MARK: - LinkedList to [T]
-extension LinkedList {
+// MARK: - SimpleLinkedList to [T]
+extension SimpleLinkedList {
     var array: [T] {
         var items: [T] = []
         var node = head

@@ -68,12 +68,16 @@ class SimpleLinkedListTests: XCTestCase {
         let tailValue = headValue
         let integers = [0, 1, 2, 3]
         let list = SimpleLinkedList<Int>(array: integers)
-        list.insert(headValue, at: 0)
+        XCTAssertTrue(list.insert(headValue, at: 0))
         XCTAssertEqual(list.count, integers.count + 1)
         XCTAssertEqual(list.head?.value, headValue)
-        list.insert(tailValue, at: list.count - 1)
+        XCTAssertTrue(list.insert(tailValue, at: list.count - 1))
         XCTAssertEqual(list.count, integers.count + 2)
         XCTAssertEqual(list.tail?.value, tailValue)
+        XCTAssertTrue(list.insert(2001, at: list.count))
+        let value = 1001
+        XCTAssertFalse(list.insert(value, at: -1))
+        XCTAssertFalse(list.insert(value, at: list.count + 1))
     }
 
     func testRemoveHead() {

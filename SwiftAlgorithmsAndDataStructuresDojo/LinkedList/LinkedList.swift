@@ -78,12 +78,14 @@ public final class LinkedList<T> {
         return nil
     }
 
-    public func insert(_ value: T, at index: Int) {
-        guard let nodeAtIndex = node(at: index) else {
-            if index == count {
-                append(value)
-            }
-            return
+    public func insert(_ value: T, at index: Int) -> Bool {
+        if index == count {
+            append(value)
+            return true
+        }
+        guard 0...count ~= index,
+            let nodeAtIndex = node(at: index) else {
+            return false
         }
         let newNode = ListNode(value: value, next: nodeAtIndex)
         newNode.previous = nodeAtIndex.previous
@@ -94,6 +96,7 @@ public final class LinkedList<T> {
             tail = newNode
         }
         count += 1
+        return true
     }
 
     public func removeHead() -> T? {

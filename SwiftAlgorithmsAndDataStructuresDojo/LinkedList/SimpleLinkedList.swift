@@ -76,12 +76,14 @@ public final class SimpleLinkedList<T> {
         return nil
     }
 
-    public func insert(_ value: T, at index: Int) {
-        guard let nodeAtIndex = node(at: index) else {
-            if index == count {
-                append(value)
-            }
-            return
+    public func insert(_ value: T, at index: Int) -> Bool {
+        if index == count {
+            append(value)
+            return true
+        }
+        guard 0...count ~= index,
+            let nodeAtIndex = node(at: index) else {
+            return false
         }
         let newNode = SimpleListNode(value: value, next: nodeAtIndex)
         if index == 0 {
@@ -90,6 +92,7 @@ public final class SimpleLinkedList<T> {
             tail = newNode
         }
         count += 1
+        return true
     }
 
     public func removeHead() -> T? {

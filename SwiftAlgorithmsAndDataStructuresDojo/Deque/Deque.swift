@@ -61,7 +61,7 @@ public final class Deque<T> {
         if list.count == maxSize {
             throw DequeueError.outOfSpace
         }
-        list.insert(item, at: 0)
+        _ = list.insert(item, at: 0)
     }
 
     public func pop() -> T? {

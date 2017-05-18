@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - BinaryTreeNode
-public class BinaryTreeNode<T: Equatable> {
+public class BinaryTreeNode<T: Comparable> {
     var data: T
     var left: BinaryTreeNode<T>? = nil
     var right: BinaryTreeNode<T>? = nil
@@ -39,7 +39,7 @@ public func ==<T: Equatable>(lhs: BinaryTreeNode<T>, rhs: BinaryTreeNode<T>) -> 
  have no meaning here. These operations are implemented in `BinarySearchTree`, which will
  introduce and leverage the concept of order.
  */
-public class BinaryTree<T: Equatable> {
+public class BinaryTree<T: Comparable> {
     var root: BinaryTreeNode<T>?
 
     public init(root: BinaryTreeNode<T>?) {

@@ -51,6 +51,10 @@ public func ==<K: Comparable, T: Comparable>(lhs: BinarySearchTreeNode<K, T>, rh
 public class BinarySearchTree<K: Comparable, T: Comparable> {
     var root: BinarySearchTreeNode<K, T>?
 
+    public var isEmpty: Bool {
+        return root == nil
+    }
+
     public init(root: BinarySearchTreeNode<K, T>?) {
         self.root = root
     }
@@ -135,7 +139,7 @@ public class BinarySearchTree<K: Comparable, T: Comparable> {
 
 // MARK: - BinarySearchTree: Order-based operations
 public extension BinarySearchTree {
-    public func search(_ node: BinarySearchTreeNode<K, T>?, key: K) -> BinarySearchTreeNode<K, T>? {
+    func search(_ node: BinarySearchTreeNode<K, T>?, key: K) -> BinarySearchTreeNode<K, T>? {
         guard let node = node else {
             return nil
         }
@@ -149,7 +153,7 @@ public extension BinarySearchTree {
         }
     }
 
-    public func minimum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
+    func minimum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
         var target = (node == nil) ? root : node
         while target?.left != nil {
             target = target?.left
@@ -157,7 +161,7 @@ public extension BinarySearchTree {
         return target
     }
 
-    public func maximum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
+    func maximum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
         var target = (node == nil) ? root : node
         while target?.right != nil {
             target = target?.right
@@ -165,11 +169,11 @@ public extension BinarySearchTree {
         return target
     }
 
-    public func insert(newNode: BinarySearchTreeNode<K, T>) {
+    func insert(newNode: BinarySearchTreeNode<K, T>) {
         insert(key: newNode.key, value: newNode.value)
     }
 
-    public func insert(key: K, value: T) {
+    func insert(key: K, value: T) {
         var leaf: BinarySearchTreeNode<K, T>? = nil
         var node = root
         while node != nil {
@@ -193,7 +197,7 @@ public extension BinarySearchTree {
         }
     }
 
-    public func remove(node: BinarySearchTreeNode<K, T>) {
+    func remove(node: BinarySearchTreeNode<K, T>) {
         if node.left == nil {
             transplant(source: node, dest: node.right)
             return
@@ -212,7 +216,7 @@ public extension BinarySearchTree {
         target.left?.parent = target
     }
 
-    public subscript(key: K) -> BinarySearchTreeNode<K, T>? {
+    subscript(key: K) -> BinarySearchTreeNode<K, T>? {
         return search(root, key: key)
     }
 }

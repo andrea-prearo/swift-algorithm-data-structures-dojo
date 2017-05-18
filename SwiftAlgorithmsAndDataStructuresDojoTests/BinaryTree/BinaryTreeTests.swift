@@ -39,6 +39,11 @@ class BinaryTreeTests: XCTestCase {
         return BinaryTree<Character>(root: root)
     }()
 
+    func testIsEmpty() {
+        XCTAssertTrue(BinaryTree<Int>().isEmpty)
+        XCTAssertTrue(BinaryTree<Character>().isEmpty)
+    }
+
     func testNodeEquality() {
         XCTAssertEqual(BinaryTreeTests.nodes.first, tree.root)
         XCTAssertNotEqual(BinaryTreeTests.nodes.last, tree.root)

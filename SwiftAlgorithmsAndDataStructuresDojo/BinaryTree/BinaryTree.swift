@@ -42,6 +42,10 @@ public func ==<T: Equatable>(lhs: BinaryTreeNode<T>, rhs: BinaryTreeNode<T>) -> 
 public class BinaryTree<T: Comparable> {
     var root: BinaryTreeNode<T>?
 
+    public var isEmpty: Bool {
+        return root == nil
+    }
+
     public init(root: BinaryTreeNode<T>?) {
         self.root = root
     }

@@ -12,7 +12,7 @@ import Foundation
  The `key` property of `BinarySearchTreeNode` will be used for ordering the nodes.
  This requires `key` to be of `Comparable` type so we can define an ordering for the nodes.
  */
-public class BinarySearchTreeNode<K: Comparable, T: Equatable> {
+public class BinarySearchTreeNode<K: Comparable, T: Comparable> {
     var key: K
     var value: T
     var left: BinarySearchTreeNode<K, T>? = nil
@@ -35,7 +35,7 @@ extension BinarySearchTreeNode: CustomStringConvertible {
 // MARK: - BinarySearchTreeNode + Equatable
 extension BinarySearchTreeNode: Equatable {}
 
-public func ==<K: Comparable, T: Equatable>(lhs: BinarySearchTreeNode<K, T>, rhs: BinarySearchTreeNode<K, T>) -> Bool {
+public func ==<K: Comparable, T: Comparable>(lhs: BinarySearchTreeNode<K, T>, rhs: BinarySearchTreeNode<K, T>) -> Bool {
     guard lhs.key == rhs.key, lhs.value == lhs.value else {
         return false
     }
@@ -48,8 +48,12 @@ public func ==<K: Comparable, T: Equatable>(lhs: BinarySearchTreeNode<K, T>, rhs
  type `K` has to be `Comparable`. We need to be able to compare the data of each node to
  implement operations such as `insert`, `remove` and `search`.
  */
-public class BinarySearchTree<K: Comparable, T: Equatable> {
+public class BinarySearchTree<K: Comparable, T: Comparable> {
     var root: BinarySearchTreeNode<K, T>?
+
+    public var isEmpty: Bool {
+        return root == nil
+    }
 
     public init(root: BinarySearchTreeNode<K, T>?) {
         self.root = root
@@ -135,7 +139,7 @@ public class BinarySearchTree<K: Comparable, T: Equatable> {
 
 // MARK: - BinarySearchTree: Order-based operations
 public extension BinarySearchTree {
-    public func search(_ node: BinarySearchTreeNode<K, T>?, key: K) -> BinarySearchTreeNode<K, T>? {
+    func search(_ node: BinarySearchTreeNode<K, T>?, key: K) -> BinarySearchTreeNode<K, T>? {
         guard let node = node else {
             return nil
         }
@@ -149,7 +153,7 @@ public extension BinarySearchTree {
         }
     }
 
-    public func minimum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
+    func minimum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
         var target = (node == nil) ? root : node
         while target?.left != nil {
             target = target?.left
@@ -157,7 +161,7 @@ public extension BinarySearchTree {
         return target
     }
 
-    public func maximum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
+    func maximum(_ node: BinarySearchTreeNode<K, T>? = nil) -> BinarySearchTreeNode<K, T>? {
         var target = (node == nil) ? root : node
         while target?.right != nil {
             target = target?.right
@@ -165,11 +169,11 @@ public extension BinarySearchTree {
         return target
     }
 
-    public func insert(newNode: BinarySearchTreeNode<K, T>) {
+    func insert(newNode: BinarySearchTreeNode<K, T>) {
         insert(key: newNode.key, value: newNode.value)
     }
 
-    public func insert(key: K, value: T) {
+    func insert(key: K, value: T) {
         var leaf: BinarySearchTreeNode<K, T>? = nil
         var node = root
         while node != nil {
@@ -193,7 +197,7 @@ public extension BinarySearchTree {
         }
     }
 
-    public func remove(node: BinarySearchTreeNode<K, T>) {
+    func remove(node: BinarySearchTreeNode<K, T>) {
         if node.left == nil {
             transplant(source: node, dest: node.right)
             return
@@ -212,7 +216,7 @@ public extension BinarySearchTree {
         target.left?.parent = target
     }
 
-    public subscript(key: K) -> BinarySearchTreeNode<K, T>? {
+    subscript(key: K) -> BinarySearchTreeNode<K, T>? {
         return search(root, key: key)
     }
 }
@@ -268,6 +272,6 @@ extension BinarySearchTree {
 // MARK: - BinarySearchTree + Equatable
 extension BinarySearchTree: Equatable {}
 
-public func ==<K: Comparable, T: Equatable>(lhs: BinarySearchTree<K, T>, rhs: BinarySearchTree<K, T>) -> Bool {
+public func ==<K: Comparable, T: Comparable>(lhs: BinarySearchTree<K, T>, rhs: BinarySearchTree<K, T>) -> Bool {
     return lhs.array == rhs.array
 }

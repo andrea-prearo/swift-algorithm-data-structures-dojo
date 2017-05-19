@@ -10,5 +10,5 @@ Traversal methods:
  - Post-order
 - Breadth-first search
 
-Binary Tree Example  
+_Binary Tree Example_  
 ![Binary Tree Example](./BinaryTree.png)

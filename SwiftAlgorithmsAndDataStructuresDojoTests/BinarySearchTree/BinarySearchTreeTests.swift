@@ -1,5 +1,5 @@
 //
-//  BinarySearchTreeTest.swift
+//  BinarySearchTreeTests.swift
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Andrea Prearo on 3/21/17.
@@ -38,6 +38,11 @@ class BinarySearchTreeTests: XCTestCase {
         }
         return bst
     }()
+
+    func testIsEmpty() {
+        XCTAssertTrue(BinarySearchTree<Int, Int>().isEmpty)
+        XCTAssertTrue(BinarySearchTree<Int, String>().isEmpty)
+    }
 
     func testNodeEquality() {
         XCTAssertEqual(BinarySearchTreeTests.nodes.first, tree.root)
@@ -228,13 +233,5 @@ fileprivate extension BinarySearchTreeTests {
             return node.description
         }()
         return nodeDump
-    }
-}
-
-extension Array {
-    mutating func shuffle() {
-        for _ in 0..<count {
-            sort { (_, _) in arc4random() < arc4random() }
-        }
     }
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF03F5391ECF62CF00DAC194 /* Array+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F5381ECF62CF00DAC194 /* Array+Util.swift */; };
+		AF03F53A1ECF62DD00DAC194 /* Array+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF03F5381ECF62CF00DAC194 /* Array+Util.swift */; };
+		AF0ED2AA1ECF14720071483D /* BinaryHeapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0ED2A91ECF14720071483D /* BinaryHeapTests.swift */; };
 		AF171D3B1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF171D311E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.framework */; };
 		AF171D421E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h in Headers */ = {isa = PBXBuildFile; fileRef = AF171D341E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF171D4D1E7AB01A0075C5F3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */; };
@@ -22,6 +25,7 @@
 		AFB2B93C1E8BD327002EDC16 /* SimpleDequeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2B93A1E8BD327002EDC16 /* SimpleDequeTests.swift */; };
 		AFB2B9411E8BD32F002EDC16 /* Deque.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2B93E1E8BD32F002EDC16 /* Deque.swift */; };
 		AFB2B9431E8BD32F002EDC16 /* SimpleDeque.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2B9401E8BD32F002EDC16 /* SimpleDeque.swift */; };
+		AFCF39611ECDBEE200B0070F /* BinaryHeap.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCF39601ECDBEE200B0070F /* BinaryHeap.swift */; };
 		AFD7EADD1E7C0629002069CD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EADC1E7C0629002069CD /* Stack.swift */; };
 		AFD7EAE31E7C105B002069CD /* LinkedListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EAE21E7C105B002069CD /* LinkedListTests.swift */; };
 		AFD7EAE51E7C1143002069CD /* StackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7EAE41E7C1143002069CD /* StackTests.swift */; };
@@ -40,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF03F5381ECF62CF00DAC194 /* Array+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+Util.swift"; path = "Extensions/Array+Util.swift"; sourceTree = "<group>"; };
+		AF0ED2A91ECF14720071483D /* BinaryHeapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryHeapTests.swift; sourceTree = "<group>"; };
 		AF171D311E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAlgorithmsAndDataStructuresDojo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF171D341E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftAlgorithmsAndDataStructuresDojo.h; sourceTree = "<group>"; };
 		AF171D351E7AAF670075C5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +64,7 @@
 		AFB2B93A1E8BD327002EDC16 /* SimpleDequeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDequeTests.swift; sourceTree = "<group>"; };
 		AFB2B93E1E8BD32F002EDC16 /* Deque.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deque.swift; sourceTree = "<group>"; };
 		AFB2B9401E8BD32F002EDC16 /* SimpleDeque.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDeque.swift; sourceTree = "<group>"; };
+		AFCF39601ECDBEE200B0070F /* BinaryHeap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinaryHeap.swift; path = BinaryHeap/BinaryHeap.swift; sourceTree = "<group>"; };
 		AFD7EADC1E7C0629002069CD /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = Stack/Stack.swift; sourceTree = "<group>"; };
 		AFD7EAE21E7C105B002069CD /* LinkedListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedListTests.swift; sourceTree = "<group>"; };
 		AFD7EAE41E7C1143002069CD /* StackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackTests.swift; path = Stack/StackTests.swift; sourceTree = "<group>"; };
@@ -84,6 +91,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF03F5371ECF62B100DAC194 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF03F5381ECF62CF00DAC194 /* Array+Util.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		AF0ED2A81ECF14720071483D /* BinaryHeap */ = {
+			isa = PBXGroup;
+			children = (
+				AF0ED2A91ECF14720071483D /* BinaryHeapTests.swift */,
+			);
+			path = BinaryHeap;
+			sourceTree = "<group>";
+		};
 		AF171D271E7AAF670075C5F3 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +128,8 @@
 		AF171D331E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo */ = {
 			isa = PBXGroup;
 			children = (
+				AF03F5371ECF62B100DAC194 /* Extensions */,
+				AFCF395D1ECDBEB700B0070F /* BinaryHeap */,
 				AFDCED291E81552E00C2CA26 /* BinarySearchTree */,
 				AF97CC2C1E7FF392006A754D /* BinaryTree */,
 				AFB2B93D1E8BD32F002EDC16 /* Deque */,
@@ -120,6 +145,7 @@
 		AF171D3E1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests */ = {
 			isa = PBXGroup;
 			children = (
+				AF0ED2A81ECF14720071483D /* BinaryHeap */,
 				AFDCED2A1E81553B00C2CA26 /* BinarySearchTree */,
 				AF97CC2D1E7FF39E006A754D /* BinaryTree */,
 				AFB2B9381E8BD327002EDC16 /* Deque */,
@@ -190,6 +216,14 @@
 				AFB2B9401E8BD32F002EDC16 /* SimpleDeque.swift */,
 			);
 			path = Deque;
+			sourceTree = "<group>";
+		};
+		AFCF395D1ECDBEB700B0070F /* BinaryHeap */ = {
+			isa = PBXGroup;
+			children = (
+				AFCF39601ECDBEE200B0070F /* BinaryHeap.swift */,
+			);
+			name = BinaryHeap;
 			sourceTree = "<group>";
 		};
 		AFD7EADB1E7C060C002069CD /* Stack */ = {
@@ -367,7 +401,9 @@
 				AF96C3B11ECBDC90000EF656 /* SimpleLinkedList.swift in Sources */,
 				AF97CC2F1E7FF3B9006A754D /* BinaryTree.swift in Sources */,
 				AFB2B9411E8BD32F002EDC16 /* Deque.swift in Sources */,
+				AF03F5391ECF62CF00DAC194 /* Array+Util.swift in Sources */,
 				AFB2B9431E8BD32F002EDC16 /* SimpleDeque.swift in Sources */,
+				AFCF39611ECDBEE200B0070F /* BinaryHeap.swift in Sources */,
 				AFD7EADD1E7C0629002069CD /* Stack.swift in Sources */,
 				AF72A18C1E7C8197007F8FA2 /* Queue.swift in Sources */,
 				AFDCED2C1E81556500C2CA26 /* BinarySearchTree.swift in Sources */,
@@ -383,9 +419,11 @@
 				AF4365CD1E81FD070081ACB3 /* BinarySearchTreeTests.swift in Sources */,
 				AFB2B93B1E8BD327002EDC16 /* DequeTests.swift in Sources */,
 				AFB2B93C1E8BD327002EDC16 /* SimpleDequeTests.swift in Sources */,
+				AF03F53A1ECF62DD00DAC194 /* Array+Util.swift in Sources */,
 				AFFE14861ECBF54B00470D51 /* SimpleLinkedListTests.swift in Sources */,
 				AF97CC311E7FFE76006A754D /* BinaryTreeTests.swift in Sources */,
 				AFD7EAE31E7C105B002069CD /* LinkedListTests.swift in Sources */,
+				AF0ED2AA1ECF14720071483D /* BinaryHeapTests.swift in Sources */,
 				AFD7EAE51E7C1143002069CD /* StackTests.swift in Sources */,
 				AF72A18F1E7C8413007F8FA2 /* QueueTests.swift in Sources */,
 				AF72A1931E7C89F4007F8FA2 /* SimpleQueueTests.swift in Sources */,

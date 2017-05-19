@@ -11,3 +11,4 @@ Implementing Data Structures and Algorithms in Swift for fun, while trying to ac
 * [Linked List](./SwiftAlgorithmsAndDataStructuresDojo/LinkedList/README.md)  
 * [Binary Tree](./SwiftAlgorithmsAndDataStructuresDojo/BinaryTree/README.md)  
 * [Binary Search Tree](./SwiftAlgorithmsAndDataStructuresDojo/BinarySearchTree/README.md)  
+* [Binary Heap](./SwiftAlgorithmsAndDataStructuresDojo/BinaryHeap/README.md)  

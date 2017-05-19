@@ -10,7 +10,7 @@
 		AF171D3B1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF171D311E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.framework */; };
 		AF171D421E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h in Headers */ = {isa = PBXBuildFile; fileRef = AF171D341E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF171D4D1E7AB01A0075C5F3 /* LinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */; };
-		AF4365CD1E81FD070081ACB3 /* BinarySearchTreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4365CC1E81FD070081ACB3 /* BinarySearchTreeTest.swift */; };
+		AF4365CD1E81FD070081ACB3 /* BinarySearchTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4365CC1E81FD070081ACB3 /* BinarySearchTreeTests.swift */; };
 		AF72A18C1E7C8197007F8FA2 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A18B1E7C8197007F8FA2 /* Queue.swift */; };
 		AF72A18F1E7C8413007F8FA2 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A18E1E7C8413007F8FA2 /* QueueTests.swift */; };
 		AF72A1911E7C89BA007F8FA2 /* SimpleQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A1901E7C89BA007F8FA2 /* SimpleQueue.swift */; };
@@ -46,7 +46,7 @@
 		AF171D3A1E7AAF670075C5F3 /* SwiftAlgorithmsAndDataStructuresDojoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftAlgorithmsAndDataStructuresDojoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF171D411E7AAF670075C5F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF171D4C1E7AB01A0075C5F3 /* LinkedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkedList.swift; sourceTree = "<group>"; };
-		AF4365CC1E81FD070081ACB3 /* BinarySearchTreeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinarySearchTreeTest.swift; path = BinarySearchTree/BinarySearchTreeTest.swift; sourceTree = "<group>"; };
+		AF4365CC1E81FD070081ACB3 /* BinarySearchTreeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BinarySearchTreeTests.swift; path = BinarySearchTree/BinarySearchTreeTests.swift; sourceTree = "<group>"; };
 		AF72A18B1E7C8197007F8FA2 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		AF72A18E1E7C8413007F8FA2 /* QueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 		AF72A1901E7C89BA007F8FA2 /* SimpleQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleQueue.swift; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 		AFDCED2A1E81553B00C2CA26 /* BinarySearchTree */ = {
 			isa = PBXGroup;
 			children = (
-				AF4365CC1E81FD070081ACB3 /* BinarySearchTreeTest.swift */,
+				AF4365CC1E81FD070081ACB3 /* BinarySearchTreeTests.swift */,
 			);
 			name = BinarySearchTree;
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF4365CD1E81FD070081ACB3 /* BinarySearchTreeTest.swift in Sources */,
+				AF4365CD1E81FD070081ACB3 /* BinarySearchTreeTests.swift in Sources */,
 				AFB2B93B1E8BD327002EDC16 /* DequeTests.swift in Sources */,
 				AFB2B93C1E8BD327002EDC16 /* SimpleDequeTests.swift in Sources */,
 				AFFE14861ECBF54B00470D51 /* SimpleLinkedListTests.swift in Sources */,

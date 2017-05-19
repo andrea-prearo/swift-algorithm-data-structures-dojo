@@ -152,6 +152,6 @@ extension BinaryTree {
 // MARK: - BinaryTree + Equatable
 extension BinaryTree: Equatable {}
 
-public func ==<T>(lhs: BinaryTree<T>, rhs: BinaryTree<T>) -> Bool {
+public func ==<T: Equatable>(lhs: BinaryTree<T>, rhs: BinaryTree<T>) -> Bool {
     return lhs.array == rhs.array
 }

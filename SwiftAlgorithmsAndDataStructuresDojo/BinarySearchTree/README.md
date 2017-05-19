@@ -18,5 +18,5 @@ Operations:
   - Post-order
  - Breadth-first search
 
-Binary Search Tree Example  
+_Binary Search Tree Example_  
 ![Binary Search Tree Example](./BinarySearchTree.png)

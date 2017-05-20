@@ -121,6 +121,14 @@ class MaxBinaryHeapTests: XCTestCase {
             XCTAssertEqual(heap[element.key], element)
         }
     }
+
+    func testSizeGrowAndShrink() {
+        let heap = BinaryHeap<Int, String>()
+        _ = (0..<130).map { heap.insert(key: $0, value: "dummy") }
+        XCTAssertEqual(heap.count, 130)
+        _ = (0..<130).map { _ in heap.remove() }
+        XCTAssertEqual(heap.count, 0)
+    }
 }
 
 fileprivate extension MaxBinaryHeapTests {

@@ -127,7 +127,7 @@ public extension BinaryHeap {
         heap[0] = heap[newCount]
         heap.remove(at: newCount)
         bubbleDown()
-        if availableSize - newCount == chunkSize {
+        if newCount > 0 && availableSize - newCount == chunkSize {
             resize(.shrink)
         }
         return root

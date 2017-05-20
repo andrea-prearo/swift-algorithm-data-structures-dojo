@@ -1,5 +1,5 @@
 //
-//  BinaryHeapTests.swift
+//  MaxBinaryHeapTests.swift
 //  SwiftAlgorithmsAndDataStructuresDojo
 //
 //  Created by Andrea Prearo on 5/19/17.
@@ -9,9 +9,9 @@
 import XCTest
 @testable import SwiftAlgorithmsAndDataStructuresDojo
 
-class BinaryHeapTests: XCTestCase {
-    static let minHeapDescription: [String] = [
-        "[23, C]", "[50, H]", "[42, B]", "[56, D]", "[72, J]", "[90, F]", "[69, G]", "[59, A]", "[58, I]", "[79, E]"]
+class MaxBinaryHeapTests: XCTestCase {
+    static let heapDescription: [String] = [
+        "[90, F]", "[72, J]", "[79, E]", "[58, I]", "[59, A]", "[23, C]", "[69, G]", "[42, B]", "[50, H]", "[56, D]"]
     static let elements = [
         BinaryHeapElement(key: 59, value: "A"),
         BinaryHeapElement(key: 42, value: "B"),
@@ -24,14 +24,25 @@ class BinaryHeapTests: XCTestCase {
         BinaryHeapElement(key: 58, value: "I"),
         BinaryHeapElement(key: 72, value: "J")
     ]
+    static let orderedElements = MaxBinaryHeapTests.elements.sorted { (element1, element2) -> Bool in
+        element1.key > element2.key
+    }
 
     lazy var heap: BinaryHeap<Int, String> = {
-        let h = BinaryHeap<Int, String>()
-        for element in BinaryHeapTests.elements {
+        let h = BinaryHeap<Int, String>(type: .max)
+        for element in MaxBinaryHeapTests.elements {
             h.insert(newElement: element)
         }
         return h
     }()
+
+    func testElementEquality() {
+        XCTAssertEqual(heap.peek, MaxBinaryHeapTests.orderedElements.first)
+        XCTAssertNotEqual(heap.peek, MaxBinaryHeapTests.orderedElements.last)
+        XCTAssertNotEqual(heap.peek, nil)
+        XCTAssertEqual(BinaryHeap<Int, Int>().peek, nil)
+        XCTAssertNotEqual(BinaryHeap<Int, String>().peek, MaxBinaryHeapTests.orderedElements.first)
+    }
 
     func testIsEmpty() {
         XCTAssertTrue(BinaryHeap<Int, Int>().isEmpty)
@@ -39,12 +50,12 @@ class BinaryHeapTests: XCTestCase {
     }
 
     func testInitFromArray() {
-        let newHeap = BinaryHeap(array: BinaryHeapTests.elements)
+        let newHeap = BinaryHeap(type: .max, array: MaxBinaryHeapTests.elements)
         XCTAssertEqual(newHeap, heap)
     }
 
     func testExpressibleByArrayLiteral() {
-        let heap = BinaryHeap<Int, String>()
+        let heap = BinaryHeap<Int, String>(type: .max)
         let elements = [
             BinaryHeapElement(key: 32, value: "ATP"),
             BinaryHeapElement(key: 4, value: "FTJ"),
@@ -54,15 +65,15 @@ class BinaryHeapTests: XCTestCase {
         for element in elements {
             heap.insert(newElement: element)
         }
-        let newTree = BinaryHeap(arrayLiteral: BinaryHeapElement(key: 32, value: "ATP"),
-                                       BinaryHeapElement(key: 4, value: "FTJ"),
-                                       BinaryHeapElement(key: 75, value: "ORN"),
-                                       BinaryHeapElement(key: 42, value: "THA"))
+        let newTree = BinaryHeap(type: .max, arrayLiteral: BinaryHeapElement(key: 32, value: "ATP"),
+                                 BinaryHeapElement(key: 4, value: "FTJ"),
+                                 BinaryHeapElement(key: 75, value: "ORN"),
+                                 BinaryHeapElement(key: 42, value: "THA"))
         XCTAssertEqual(newTree, heap)
     }
 
     func testDescription() {
-        XCTAssertEqual(heap.description, BinaryHeapTests.minHeapDescription.joined(separator: ", "))
+        XCTAssertEqual(heap.description, MaxBinaryHeapTests.heapDescription.joined(separator: ", "))
         XCTAssertEqual(BinaryHeap<Int, String>().description, "")
     }
 
@@ -71,13 +82,13 @@ class BinaryHeapTests: XCTestCase {
     }
 
     func testSearchSuccess() {
-        for element in BinaryHeapTests.elements {
+        for element in MaxBinaryHeapTests.elements {
             XCTAssertEqual(heap.search(key: element.key), element)
         }
     }
 
     func testPeek() {
-        XCTAssertEqual(heap.peek, BinaryHeapElement(key: 23, value: "C"))
+        XCTAssertEqual(heap.peek, BinaryHeapElement(key: 90, value: "F"))
     }
 
     func testInsert() {
@@ -100,23 +111,28 @@ class BinaryHeapTests: XCTestCase {
     }
 
     func testRemove() {
-        let orederedElements = BinaryHeapTests.elements.sorted { (element1, element2) -> Bool in
-            element1.key < element2.key
-        }
-        for element in orederedElements {
+        for element in MaxBinaryHeapTests.orderedElements {
             XCTAssertEqual(heap.remove(), element)
         }
     }
 
     func testSubscript() {
-        for element in BinaryHeapTests.elements {
+        for element in MaxBinaryHeapTests.elements {
             XCTAssertEqual(heap[element.key], element)
         }
     }
+
+    func testSizeGrowAndShrink() {
+        let heap = BinaryHeap<Int, String>()
+        _ = (0..<130).map { heap.insert(key: $0, value: "dummy") }
+        XCTAssertEqual(heap.count, 130)
+        _ = (0..<130).map { _ in heap.remove() }
+        XCTAssertEqual(heap.count, 0)
+    }
 }
 
-fileprivate extension BinaryHeapTests {
-    func minHeapDescription(_ element: BinaryHeapElement<Int, String>?) -> String {
+fileprivate extension MaxBinaryHeapTests {
+    func heapDescription(_ element: BinaryHeapElement<Int, String>?) -> String {
         let nodeDump: String = {
             guard let element = element else {
                 return "-"

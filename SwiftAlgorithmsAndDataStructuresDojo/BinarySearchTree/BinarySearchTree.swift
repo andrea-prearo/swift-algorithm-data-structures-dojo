@@ -17,7 +17,7 @@ public class BinarySearchTreeNode<K: Comparable, T: Comparable> {
     var value: T
     var left: BinarySearchTreeNode<K, T>? = nil
     var right: BinarySearchTreeNode<K, T>? = nil
-    var parent: BinarySearchTreeNode<K, T>? = nil
+    weak var parent: BinarySearchTreeNode<K, T>? = nil
 
     public init(key: K, value: T) {
         self.key = key

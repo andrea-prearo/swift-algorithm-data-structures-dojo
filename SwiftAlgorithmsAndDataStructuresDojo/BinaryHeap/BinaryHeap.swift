@@ -73,7 +73,7 @@ public class BinaryHeap<K: Comparable, T: Comparable> {
     }
 
     public var peek: BinaryHeapElement<K, T>? {
-        return heap[0]
+        return heap.first
     }
 
     public init(type: BinaryHeapOrder = .min) {
@@ -127,7 +127,7 @@ public extension BinaryHeap {
         heap[0] = heap[newCount]
         heap.remove(at: newCount)
         bubbleDown()
-        if availableSize - newCount == chunkSize {
+        if newCount > 0 && availableSize - newCount == chunkSize {
             resize(.shrink)
         }
         return root

@@ -73,7 +73,7 @@ public class BinaryHeap<K: Comparable, T: Comparable> {
     }
 
     public var peek: BinaryHeapElement<K, T>? {
-        return heap[0]
+        return heap.first
     }
 
     public init(type: BinaryHeapOrder = .min) {

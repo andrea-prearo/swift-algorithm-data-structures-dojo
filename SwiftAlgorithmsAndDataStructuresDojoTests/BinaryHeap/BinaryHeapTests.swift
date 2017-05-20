@@ -24,6 +24,9 @@ class BinaryHeapTests: XCTestCase {
         BinaryHeapElement(key: 58, value: "I"),
         BinaryHeapElement(key: 72, value: "J")
     ]
+    static let ascendingOrderElements = BinaryHeapTests.elements.sorted { (element1, element2) -> Bool in
+        element1.key < element2.key
+    }
 
     lazy var heap: BinaryHeap<Int, String> = {
         let h = BinaryHeap<Int, String>()
@@ -32,6 +35,14 @@ class BinaryHeapTests: XCTestCase {
         }
         return h
     }()
+
+    func testElementEquality() {
+        XCTAssertEqual(heap.peek, BinaryHeapTests.ascendingOrderElements.first)
+        XCTAssertNotEqual(heap.peek, BinaryHeapTests.ascendingOrderElements.last)
+        XCTAssertNotEqual(heap.peek, nil)
+        XCTAssertEqual(BinaryHeap<Int, Int>().peek, nil)
+        XCTAssertNotEqual(BinaryHeap<Int, String>().peek, BinaryHeapTests.ascendingOrderElements.first)
+    }
 
     func testIsEmpty() {
         XCTAssertTrue(BinaryHeap<Int, Int>().isEmpty)
@@ -100,10 +111,7 @@ class BinaryHeapTests: XCTestCase {
     }
 
     func testRemove() {
-        let orederedElements = BinaryHeapTests.elements.sorted { (element1, element2) -> Bool in
-            element1.key < element2.key
-        }
-        for element in orederedElements {
+        for element in BinaryHeapTests.ascendingOrderElements {
             XCTAssertEqual(heap.remove(), element)
         }
     }
